@@ -3,21 +3,23 @@ part of 'DioImports.dart';
 class DioHelper {
   late Dio _dio;
   late DioCacheManager _manager;
-  BuildContext context;
   final bool forceRefresh;
-  final baseUrl = "https://mashaghil.ip4s.com";
-  final String _branch = "6";
+  static late String baseUrl;
+  // static late Map<String,String> headers;
 
-  DioHelper({this.forceRefresh = true, required this.context}) {
-      _dio = Dio(
-        BaseOptions(
-            baseUrl: baseUrl,
-            contentType: "application/x-www-form-urlencoded; charset=utf-8"),
-      )
-        ..interceptors.add(_getCacheManager().interceptor)
-        ..interceptors.add(LogInterceptor(responseBody: true));
-    }
+  static init({required String base,}){
+    baseUrl=base;
+  }
 
+  DioHelper({this.forceRefresh = true,}){
+    _dio = Dio(
+      BaseOptions(
+          baseUrl: baseUrl,
+          contentType: "application/x-www-form-urlencoded; charset=utf-8"),
+    )
+      ..interceptors.add(_getCacheManager().interceptor)
+      ..interceptors.add(LogInterceptor(responseBody: true,requestBody: true,logPrint: (data)=>log(data.toString())));
+  }
 
   DioCacheManager _getCacheManager() {
     _manager = DioCacheManager(
@@ -25,75 +27,181 @@ class DioHelper {
     return _manager;
   }
 
-
-
-  Options _buildCacheOptions(Map<String, dynamic> body, {bool subKey = true}) {
-    return buildCacheOptions(const Duration(hours: 1),
-        maxStale: const Duration(days: 1),
-        forceRefresh: forceRefresh,
-        subKey: subKey ? json.encode(body) : "");
+  Options _buildCacheOptions() {
+    return buildCacheOptions(
+      Duration(days: 1),
+      maxStale: Duration(days: 7),
+      forceRefresh: forceRefresh,
+      options: Options(extra: {}),
+    );
   }
 
-  Future<dynamic> get(String url, Map<String, dynamic> body) async {
-    body.addAll({"branch_id": _branch});
-    _printRequestBody(body);
+  Future<dynamic> get({required String url, Map<String, dynamic>? query}) async {
     _dio.options.headers = await _getHeader();
-    var response = await _dio.post("$baseUrl$url",
-        data: FormData.fromMap(body), options: _buildCacheOptions(body));
-    if (response.statusCode == 200) {
-      var data = response.data;
-      if (data["key"] == 1) {
-        return data;
-      } else {
-        SnackBarHelper.showBasicSnack(msg:data["msg"].toString());
+    try {
+      var response = await _dio.get("$url",queryParameters: query, options: _buildCacheOptions());
+      log("response ${response.statusCode}");
+      if (response.statusCode==200||response.statusCode==201) {
+        return response.data;
+      } else{
+        showErrorMessage(response);
       }
-    } else if (response.statusCode == 401 || response.statusCode == 301) {
-      logout();
-    } else {
-      SnackBarHelper.showBasicSnack(msg:tr(context,"checkNet"));
+    } on DioError catch (e) {
+      showErrorMessage(e.response);
     }
     return null;
   }
 
-  Future<dynamic> post(String url, Map<String, dynamic> body) async {
-    AppLoaderHelper.showLoadingDialog();
-    body.addAll({"branch_id": _branch});
-    _printRequestBody(body);
-    _dio.options.headers = await _getHeader();
-    var response = await _dio.post("$baseUrl$url",
-        data: FormData.fromMap(body), options: _buildCacheOptions(body));
-    print("response ${response.statusCode}");
+  Future<dynamic> post(
+      {required String url, required Map<String, dynamic> body,bool showLoader = true,Map<String, dynamic>? query}) async {
 
-    if (response.statusCode == 200) {
-      var data = response.data;
-      print(response.data);
-      if (data["key"] == 1) {
-        EasyLoading.dismiss();
-        SnackBarHelper.showBasicSnack(msg:data["msg"].toString());
-        return data;
-      } else {
-        EasyLoading.dismiss();
-        SnackBarHelper.showBasicSnack(msg:data["msg"].toString());
+    _printRequestBody(body);
+    FormData formData = FormData.fromMap(body);
+    bool haveFile = false;
+    body.forEach((key, value) async {
+      if ((value) is File) {
+        haveFile = true;
+        //create multipart using filepath, string or bytes
+        MapEntry<String, MultipartFile> pic = MapEntry(
+          "$key",
+          MultipartFile.fromFileSync(value.path,
+              filename: value.path.split("/").last),
+        );
+        //add multipart to request
+        formData.files.add(pic);
+      } else if ((value) is List<File>) {
+        haveFile = true;
+        List<MapEntry<String, MultipartFile>> files = [];
+        value.forEach((element) async {
+          MapEntry<String, MultipartFile> pic = MapEntry(
+              "$key",
+              MultipartFile.fromFileSync(
+                element.path,
+                filename: element.path.split("/").last,
+              ));
+          files.add(pic);
+        });
+        formData.files.addAll(files);
       }
-    } else if (response.statusCode == 401 || response.statusCode == 301) {
-      logout();
-    } else {
-      EasyLoading.dismiss();
-      SnackBarHelper.showBasicSnack(msg:tr(context,"chickNet"));
+    });
+
+    _dio.options.headers = await _getHeader();
+    //create multipart request for POST or PATCH method
+
+    try {
+      var response = await _dio.post("$url", data: haveFile? formData : body,queryParameters: query);
+      log("response ${response.statusCode}");
+      if (response.statusCode==200||response.statusCode==201) {
+        return response.data;
+      } else{
+        showErrorMessage(response);
+      }
+    } on DioError catch (e) {
+      showErrorMessage(e.response);
     }
+
     return null;
   }
 
-  Future<dynamic> uploadFile(String url, Map<String, dynamic> body) async {
-    AppLoaderHelper.showLoadingDialog();
-    body.addAll({"branch_id": _branch});
+
+  Future<dynamic> put(
+      {required String url, required Map<String, dynamic> body,bool showLoader = true,Map<String, dynamic>? query}) async {
+    _printRequestBody(body);
+    FormData formData = FormData.fromMap(body);
+    bool haveFile = false;
+    body.forEach((key, value) async {
+      if ((value) is File) {
+        haveFile = true;
+        //create multipart using filepath, string or bytes
+        MapEntry<String, MultipartFile> pic = MapEntry(
+          "$key",
+          MultipartFile.fromFileSync(value.path,
+              filename: value.path.split("/").last),
+        );
+        //add multipart to request
+        formData.files.add(pic);
+      } else if ((value) is List<File>) {
+        haveFile = true;
+        List<MapEntry<String, MultipartFile>> files = [];
+        value.forEach((element) async {
+          MapEntry<String, MultipartFile> pic = MapEntry(
+              "$key",
+              MultipartFile.fromFileSync(
+                element.path,
+                filename: element.path.split("/").last,
+              ));
+          files.add(pic);
+        });
+        formData.files.addAll(files);
+      }
+    });
+
+    _dio.options.headers = await _getHeader();
+    //create multipart request for POST or PATCH method
+
+    try {
+      var response = await _dio.put("$url", data: haveFile? formData : body,queryParameters: query);
+      log("response ${response.statusCode}");
+      if (response.statusCode==200||response.statusCode==201) {
+        return response.data;
+      } else{
+        showErrorMessage(response);
+      }
+    } on DioError catch (e) {
+      showErrorMessage(e.response);
+    }
+
+    return null;
+  }
+
+  Future<dynamic> patch({required String url,required Map<String, dynamic> body,bool showLoader = true,Map<String, dynamic>? query}) async {
+    _printRequestBody(body);
+    _dio.options.headers = await _getHeader();
+    try {
+      var response =
+      await _dio.patch("$url", data: body,queryParameters: query);
+      log("response ${response.statusCode}");
+      if (response.statusCode==200||response.statusCode==201) {
+        return response.data;
+      } else{
+        showErrorMessage(response);
+      }
+    } on DioError catch (e) {
+      showErrorMessage(e.response);
+    }
+
+    return null;
+  }
+
+  Future<dynamic> delete({required String url, Map<String, dynamic>? body,
+    bool showLoader = true,Map<String, dynamic>? query}) async {
+    // _printRequestBody(body!);
+    _dio.options.headers = await _getHeader();
+    try {
+      var response =
+      await _dio.delete("$url", data: body,queryParameters: query);
+      log("body response ${response.statusCode}");
+      if (response.statusCode==200||response.statusCode==201) {
+        return response.data;
+      } else{
+        showErrorMessage(response);
+      }
+    } on DioError catch (e) {
+      showErrorMessage(e.response);
+    }
+
+    return null;
+  }
+
+  Future<dynamic> uploadChatFile(String url, Map<String, dynamic> body,
+      {bool showLoader = true}) async {
     _printRequestBody(body);
     FormData formData = FormData.fromMap(body);
     body.forEach((key, value) async {
       if ((value) is File) {
         //create multipart using filepath, string or bytes
         MapEntry<String, MultipartFile> pic = MapEntry(
-          key,
+          "$key",
           MultipartFile.fromFileSync(value.path,
               filename: value.path.split("/").last),
         );
@@ -103,7 +211,7 @@ class DioHelper {
         List<MapEntry<String, MultipartFile>> files = [];
         value.forEach((element) async {
           MapEntry<String, MultipartFile> pic = MapEntry(
-              key,
+              "$key",
               MultipartFile.fromFileSync(
                 element.path,
                 filename: element.path.split("/").last,
@@ -119,58 +227,83 @@ class DioHelper {
 
     _dio.options.headers = await _getHeader();
     //create multipart request for POST or PATCH method
-    var response = await _dio.post("$baseUrl$url",
-        data: formData, options: _buildCacheOptions(body, subKey: false));
 
-    if (response.statusCode == 200) {
-      var data = response.data;
-      if (data["key"] == 1) {
-        EasyLoading.dismiss();
-        SnackBarHelper.showBasicSnack(msg:data["msg"].toString());
-        return data;
-      } else {
-        EasyLoading.dismiss();
-        SnackBarHelper.showBasicSnack(msg:data["msg"].toString());
+    try {
+      var response = await _dio.post("$url", data: formData);
+      log("response ${response.statusCode}");
+      if (response.statusCode==200||response.statusCode==201) {
+        return response.data;
+      } else{
+        showErrorMessage(response);
       }
-    } else if (response.statusCode == 401 || response.statusCode == 301) {
-      logout();
-    } else {
-      EasyLoading.dismiss();
-      SnackBarHelper.showBasicSnack(msg:tr(context,"chickNet"));
+    } on DioError catch (e) {
+      showErrorMessage(e.response);
     }
+
     return null;
   }
 
   void _printRequestBody(Map<String, dynamic> body) {
     log(
         "-------------------------------------------------------------------");
-    log(body.toString());
+    log("$body");
     log(
         "-------------------------------------------------------------------");
   }
 
+
+  showErrorMessage(Response? response){
+    if (response==null) {
+      log("failed response Check Server");
+      SnackBarHelper.showBasicSnack( msg: "Check Server",);
+    }else{
+      log("failed response ${response.statusCode}");
+      log("failed response ${response.data}");
+      var data = response.data;
+      if(data is String) data = json.decode(response.data);
+      switch(response.statusCode){
+        case 500:
+          SnackBarHelper.showBasicSnack( msg: data["message"].toString());
+          break;
+        case 422:
+          if(data["errors"]!=null){
+            Map<String,dynamic> errors = data["message"];
+            log("response errors $errors");
+            errors.forEach((key, value){
+              List<String> lst = List<String>.from(value.map((e) => e));
+              lst.forEach((e) {
+                SnackBarHelper.showBasicSnack( msg: e);
+              });
+            });
+          }else{
+            SnackBarHelper.showBasicSnack( msg: data["message"].toString());
+          }
+          break;
+        case 401:
+          tokenExpired();
+          break;
+        case 301:
+        case 302:
+          tokenExpired();
+          break;
+      }
+    }
+  }
+
   _getHeader() async {
-    // todo : add Token
-    // String token = GlobalState.instance.get("token") ?? "";
+    var lang = navigatorKey.currentContext!.read<LangCubit>().state.locale.languageCode;
+    String? token = Preferences.getString('token');
+    log("token : $token");
     return {
+      'Accept-Language': '$lang',
       'Accept': 'application/json',
-      'Authorization': 'Bearer ',
+      'Authorization': 'Bearer $token',
     };
   }
 
-  Future<void> logout() async {
-    AppLoaderHelper.showLoadingDialog();
-    String? deviceId = await Utils.getDeviceId();
-    Map<String, dynamic> body = {
-      // "lang":context.read<LangBloc>().state.lang,
-      // "user_id":context.read<UserCubit>().state.model.id,
-      "device_id": deviceId
-    };
-    log(body.toString());
-    await DioHelper(context: context).get("/api/v1/logout", body);
-    EasyLoading.dismiss().then((value) {
-      Utils.clearSavedData();
-      Phoenix.rebirth(context);
-    });
+
+  void tokenExpired()async {
+    Preferences.clearAll();
+    // NavigationService.navigateAndReplacement(Login());
   }
 }

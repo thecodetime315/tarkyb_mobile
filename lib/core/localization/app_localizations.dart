@@ -3,14 +3,17 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../resource/navigation_service.dart';
+
 class AppLocalizations {
   final Locale? locale;
   AppLocalizations({
     this.locale,
   });
-
-  static AppLocalizations? of(BuildContext context) {
-    return Localizations.of<AppLocalizations>(context, AppLocalizations);
+  static BuildContext? currentContext =
+      navigatorKey.currentContext;
+  static AppLocalizations? of() {
+    return Localizations.of<AppLocalizations>(currentContext!, AppLocalizations);
   }
 
   static const LocalizationsDelegate<AppLocalizations> delegate =
@@ -51,8 +54,9 @@ class _AppLocalizationsDelegate
 }
 
 // todo : check this
- tr(BuildContext context,String key){
-   return AppLocalizations.of(context)!.translate(key);
+tr(String key){
+
+  return AppLocalizations.of()!.translate(key);
 }
 // extension TranslateX on String {
 //   String tr(BuildContext context) {

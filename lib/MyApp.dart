@@ -21,7 +21,7 @@ class _MyAppState extends State<MyApp> {
         return MaterialApp(
             debugShowCheckedModeBanner: false,
             // theme: MainData.defaultThem,
-            title: "كارمن",
+            title: "Base",
             supportedLocales: const [Locale("ar"), Locale("en")],
             locale: state.locale,
             localizationsDelegates: const [
