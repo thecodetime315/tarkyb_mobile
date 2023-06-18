@@ -1,0 +1,12 @@
+<svg id="profile" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
+  <g id="Ellipse_6186" data-name="Ellipse 6186" fill="#fff" stroke="#f3f3f3" stroke-width="1">
+    <circle cx="15" cy="15" r="15" stroke="none"/>
+    <circle cx="15" cy="15" r="14.5" fill="none"/>
+  </g>
+  <g id="noun_Edit_Profile_4174212" data-name="noun_Edit Profile_4174212" transform="translate(6.306 5.958)">
+    <path id="Path_35211" data-name="Path 35211" d="M12.021,2a3.521,3.521,0,1,0,3.521,3.521A3.523,3.523,0,0,0,12.021,2Zm0,1.006A2.515,2.515,0,1,1,9.506,5.521,2.516,2.516,0,0,1,12.021,3.006Z" transform="translate(-3.479)" fill="#3b3b3b" fill-rule="evenodd"/>
+    <path id="Path_35212" data-name="Path 35212" d="M2.506,23.03H8.793a.5.5,0,1,1,0,1.006H2a.5.5,0,0,1-.5-.5V22.527A4.527,4.527,0,0,1,6.027,18H8.793a.5.5,0,0,1,0,1.006H6.027a3.521,3.521,0,0,0-3.521,3.521Z" transform="translate(0 -7.952)" fill="#3b3b3b" fill-rule="evenodd"/>
+    <path id="Path_35213" data-name="Path 35213" d="M24.755,18.5a.5.5,0,0,0,0-.711L23.5,16.536a.5.5,0,0,0-.711,0l-2.95,2.95a.5.5,0,0,0-.147.334l-.057,1.314a.5.5,0,0,0,.525.524l1.314-.057a.5.5,0,0,0,.334-.147l2.95-2.95Zm-4.069,1.555-.025.57.57-.025,2.456-2.456-.545-.546-2.456,2.456Z" transform="translate(-9.012 -7.151)" fill="#28c1ed" fill-rule="evenodd"/>
+    <path id="Path_35214" data-name="Path 35214" d="M18.5,29.008H23.03a.5.5,0,1,0,0-1.006H18.5a.5.5,0,1,0,0,1.006Z" transform="translate(-8.201 -12.923)" fill="#28c1ed" fill-rule="evenodd"/>
+  </g>
+</svg>

@@ -2,5 +2,29 @@
 const String imagePath = "assets/images";
 
 class AssetsManager{
-  static const String splashLogo = "$imagePath/splash_logo.png";
+  static const String splashLogo = "$imagePath/logo.png";
+  static const String about = "$imagePath/about.svg";
+  static const String cart = "$imagePath/cart.svg";
+  static const String cartHome = "$imagePath/cartHome.svg";
+  static const String code = "$imagePath/code.svg";
+  static const String contactus = "$imagePath/contactus.svg";
+  static const String logout = "$imagePath/logout.svg";
+  static const String more = "$imagePath/more.svg";
+  static const String notification_icon = "$imagePath/notification_icon.svg";
+  static const String orders = "$imagePath/orders.svg";
+  static const String policy = "$imagePath/policy.svg";
+  static const String profile = "$imagePath/profile.svg";
+  static const String saudi = "$imagePath/saudi.svg";
+  static const String terms = "$imagePath/terms.svg";
+  static const String translate = "$imagePath/translate.svg";
+  static const String undraw_good = "$imagePath/undraw_good.svg";
+  static const String united_states = "$imagePath/united_states.svg";
+  static const String wallet = "$imagePath/wallet.svg";
+
+
+
+
+
+
+
 }

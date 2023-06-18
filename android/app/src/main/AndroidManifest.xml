@@ -18,7 +18,7 @@
 <!--    android:name=".Application"-->
 
     <application
-        android:icon="@mipmap/launcher_icon"
+        android:icon="@mipmap/ic_launcher"
         android:label="base_flutter">
         <meta-data
             android:name="com.google.android.geo.API_KEY"

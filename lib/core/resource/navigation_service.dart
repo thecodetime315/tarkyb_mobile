@@ -16,7 +16,7 @@ class NavigationService {
   }
 
   static  Future<dynamic>? navigateAndReplacement(Widget page) {
-    return navigatorKey.currentState!.pushReplacement(_materialPageRoute(page));
+    return navigatorKey.currentState?.pushReplacement(_materialPageRoute(page));
   }
 
   static Future<dynamic>? removeUntil(Widget page) {

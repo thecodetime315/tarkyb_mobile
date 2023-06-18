@@ -18,7 +18,7 @@ extension Validator on String {
   String? validatePassword(BuildContext context,{String? message}) {
     if (this.trim().isEmpty) {
       return message ?? tr("fillField");
-    } else if (this.length < 6) {
+    } else if (this.length < 8) {
       return message ?? tr("passValidation");
     }
     return null;

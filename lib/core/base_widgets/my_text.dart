@@ -1,5 +1,6 @@
 // ignore_for_file: must_be_immutable
 
+import 'package:base_flutter/core/resource/font_manager.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -28,6 +29,7 @@ class MyText extends StatelessWidget {
         fontSize: size?? 12,
         decoration: decoration,
         fontWeight: fontWeight?? FontWeight.bold,
+        fontFamily: FontConstants.fontFamily
       ),
       overflow: overflow,
     );

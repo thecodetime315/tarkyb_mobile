@@ -10,19 +10,20 @@ class AppLocalizations {
   AppLocalizations({
     this.locale,
   });
-  static BuildContext? currentContext =
-      navigatorKey.currentContext;
+  static BuildContext? currentContext = navigatorKey.currentContext;
   static AppLocalizations? of() {
-    return Localizations.of<AppLocalizations>(currentContext!, AppLocalizations);
+    return Localizations.of<AppLocalizations>(
+        currentContext!, AppLocalizations);
   }
 
   static const LocalizationsDelegate<AppLocalizations> delegate =
-  _AppLocalizationsDelegate();
+      _AppLocalizationsDelegate();
 
   late Map<String, String> _localizedStrings;
 
   Future loadJsonLanguage() async {
-    String jsonString = await rootBundle.loadString("assets/lang/${locale!.languageCode}.json");
+    String jsonString =
+        await rootBundle.loadString("assets/lang/${locale!.languageCode}.json");
 
     Map<String, dynamic> jsonMap = json.decode(jsonString);
     _localizedStrings = jsonMap.map((key, value) {
@@ -54,8 +55,7 @@ class _AppLocalizationsDelegate
 }
 
 // todo : check this
-tr(String key){
-
+tr(String key) {
   return AppLocalizations.of()!.translate(key);
 }
 // extension TranslateX on String {

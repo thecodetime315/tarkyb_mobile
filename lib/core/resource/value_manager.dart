@@ -1,4 +1,5 @@
 class AppMargin {
+  static const double m4 = 4.0;
   static const double m8 = 8.0;
   static const double m12 = 12.0;
   static const double m14 = 14.0;
@@ -9,6 +10,7 @@ class AppMargin {
 
 class AppPadding {
   static const double p2 = 2.0;
+  static const double p4 = 4.0;
   static const double p8 = 8.0;
   static const double p12 = 12.0;
   static const double p14 = 14.0;
