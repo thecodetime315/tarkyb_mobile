@@ -2,7 +2,7 @@ import 'package:base_flutter/core/base_widgets/custom_button.dart';
 import 'package:base_flutter/core/extensions/media_query.dart';
 import 'package:base_flutter/core/helpers/validator.dart';
 import 'package:base_flutter/core/resource/navigation_service.dart';
-import 'package:base_flutter/features/auth/widgets/logo_widget.dart';
+import 'package:base_flutter/features/custom_widgets/logo_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 

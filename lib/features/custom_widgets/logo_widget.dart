@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 
-import '../../../core/resource/assets_manager.dart';
+import '../../core/resource/assets_manager.dart';
 
 class LogoWidget extends StatelessWidget {
 

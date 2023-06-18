@@ -4,7 +4,7 @@ import 'package:base_flutter/core/resource/navigation_service.dart';
 import 'package:base_flutter/features/auth/screens/login/login_view.dart';
 import 'package:base_flutter/features/auth/screens/reset_password/widgets/reset_password_form.dart';
 import 'package:base_flutter/features/auth/screens/reset_password/widgets/reset_password_texts.dart';
-import 'package:base_flutter/features/auth/widgets/logo_widget.dart';
+import 'package:base_flutter/features/custom_widgets/logo_widget.dart';
 import 'package:flutter/material.dart';
 
 class ResetPasswordBody extends StatelessWidget {

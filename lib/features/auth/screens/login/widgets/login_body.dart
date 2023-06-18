@@ -4,7 +4,7 @@ import 'package:base_flutter/features/auth/screens/login/widgets/login_buttons.d
 import 'package:flutter/material.dart';
 
 import '../../../../../core/resource/color_manager.dart';
-import '../../../widgets/logo_widget.dart';
+import '../../../../custom_widgets/logo_widget.dart';
 import 'forget_password_button.dart';
 import 'login_form.dart';
 

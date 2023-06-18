@@ -1,7 +1,6 @@
-
 const String imagePath = "assets/images";
 
-class AssetsManager{
+class AssetsManager {
   static const String splashLogo = "$imagePath/logo.png";
   static const String about = "$imagePath/about.svg";
   static const String cart = "$imagePath/cart.svg";
@@ -20,11 +19,5 @@ class AssetsManager{
   static const String undraw_good = "$imagePath/undraw_good.svg";
   static const String united_states = "$imagePath/united_states.svg";
   static const String wallet = "$imagePath/wallet.svg";
-
-
-
-
-
-
-
+  static const String home = "$imagePath/home.svg";
 }

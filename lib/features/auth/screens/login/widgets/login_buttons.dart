@@ -7,10 +7,13 @@ import 'package:base_flutter/core/resource/color_manager.dart';
 import 'package:base_flutter/core/resource/font_manager.dart';
 import 'package:base_flutter/core/resource/navigation_service.dart';
 import 'package:base_flutter/features/auth/screens/register/register_view.dart';
+import 'package:base_flutter/features/main_navigation_bar/cubits/main_navigation_cubit.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/localization/app_localizations.dart';
+import '../../../../main_navigation_bar/main_navigation_bar.dart';
 
 class LoginButtons extends StatelessWidget {
 
@@ -18,7 +21,9 @@ class LoginButtons extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        CustomButton(title: tr('login'),onTap: (){},margin: EdgeInsets.symmetric(horizontal: 30,vertical: 25),),
+        CustomButton(title: tr('login'),onTap: (){
+          NavigationService.removeUntil(BlocProvider(create:  (context) => BottomNavCubit(),child: MainNavigationBar()));
+        },margin: EdgeInsets.symmetric(horizontal: 30,vertical: 25),),
         CustomTextButton(title: "تخطي التسجيل", onTap: (){},color: ColorManager.grey2,),
         Text.rich(
             TextSpan(
