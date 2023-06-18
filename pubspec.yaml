@@ -40,6 +40,7 @@ dependencies:
   pin_code_fields: ^7.3.0
   image_picker: ^0.8.4+9
   flutter_svg: ^0.23.0+1
+  wakelock:
 
 
 

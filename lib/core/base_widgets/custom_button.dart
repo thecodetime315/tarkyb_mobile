@@ -50,11 +50,13 @@ class CustomButton extends StatelessWidget {
             margin ?? const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
         child: ElevatedButton(
           style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all(color),
-              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                  RoundedRectangleBorder(
-                      borderRadius:borderRadius?? BorderRadius.circular(5.0),
-                  ),),
+            backgroundColor:
+                MaterialStateProperty.all(color ?? ColorManager.primary),
+            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+              RoundedRectangleBorder(
+                borderRadius: borderRadius ?? BorderRadius.circular(5.0),
+              ),
+            ),
           ),
           onPressed: onTap,
           child: Row(
