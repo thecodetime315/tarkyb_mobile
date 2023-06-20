@@ -1,6 +1,6 @@
 part of 'utils_imports.dart';
-class Utils {
 
+class Utils {
   static Future<void> manipulateSplashData(BuildContext context) async {
     getCurrentLocation();
     var strUser = Preferences.getString("user");
@@ -15,7 +15,6 @@ class Utils {
       // AutoRouter.of(context).push(SelectUserRoute());
     }
   }
-
 
   //
   // static Future<bool> manipulateLoginData(
@@ -40,8 +39,6 @@ class Utils {
   //   }
   //   return false;
   // }
-
-
 
   // static void setCurrentUserData(UserModel model, BuildContext context) async {
   //   // context.read<UserCubit>().onUpdateUserData(model);
@@ -85,7 +82,7 @@ class Utils {
     if (await canLaunch(url)) {
       await launch(url);
     } else {
-      SnackBarHelper.showBasicSnack(msg:"من فضلك تآكد من الرابط");
+      SnackBarHelper.showBasicSnack(msg: "من فضلك تآكد من الرابط");
     }
   }
 
@@ -172,23 +169,22 @@ class Utils {
   static void copToClipboard(
       {required String text, required GlobalKey<ScaffoldState> scaffold}) {
     if (text.trim().isEmpty) {
-      SnackBarHelper.showBasicSnack(msg:"لا يوجد بيانات للنسخ");
+      SnackBarHelper.showBasicSnack(msg: "لا يوجد بيانات للنسخ");
       return;
     } else {
       Clipboard.setData(ClipboardData(text: "$text")).then((value) {
-        SnackBarHelper.showBasicSnack(msg:"تم النسخ بنجاح");
+        SnackBarHelper.showBasicSnack(msg: "تم النسخ بنجاح");
       });
     }
   }
 
   static Future<Position?> getCurrentLocation() async {
-
     bool serviceEnabled;
     LocationPermission permission;
     // Test if location services are enabled.
     serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
-      SnackBarHelper.showBasicSnack(msg:'Location services are disabled');
+      SnackBarHelper.showBasicSnack(msg: 'Location services are disabled');
       return null;
     }
 
@@ -202,7 +198,9 @@ class Utils {
     }
 
     if (permission == LocationPermission.deniedForever) {
-      SnackBarHelper.showBasicSnack(msg:'Location permissions are permanently denied, we cannot request permissions');
+      SnackBarHelper.showBasicSnack(
+          msg:
+              'Location permissions are permanently denied, we cannot request permissions');
       return null;
     }
 
@@ -255,7 +253,7 @@ class Utils {
   static Future<String> getAddress(LatLng latLng, BuildContext context) async {
     try {
       List<Placemark> placeMarks =
-      await placemarkFromCoordinates(latLng.latitude, latLng.longitude);
+          await placemarkFromCoordinates(latLng.latitude, latLng.longitude);
 
       var data =
           "${placeMarks[0].country ?? ""}  ${placeMarks[0].administrativeArea ?? ""}  ${placeMarks[0].subAdministrativeArea ?? ""} ${placeMarks[0].street ?? ""}";
@@ -265,7 +263,6 @@ class Utils {
       return "Error";
     }
   }
-
 
   static String convertDigitsToLatin(String s) {
     var sb = new StringBuffer();
