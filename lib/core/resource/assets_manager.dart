@@ -20,4 +20,8 @@ class AssetsManager {
   static const String united_states = "$imagePath/united_states.svg";
   static const String wallet = "$imagePath/wallet.svg";
   static const String home = "$imagePath/home.svg";
+  static const String edit = "$imagePath/edit.png";
+  static const String gmail = "$imagePath/gmail.svg";
+  static const String whatsapp = "$imagePath/whatsapp.svg";
+  static const String twitter = "$imagePath/twitter.svg";
 }

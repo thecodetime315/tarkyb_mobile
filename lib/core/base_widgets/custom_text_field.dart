@@ -48,7 +48,7 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin:  EdgeInsets.symmetric(vertical: AppMargin.m8,horizontal: AppMargin.m4),
+      margin:  EdgeInsets.symmetric(vertical: AppMargin.m8,horizontal: AppMargin.m2),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -63,7 +63,7 @@ class CustomTextField extends StatelessWidget {
             width: width,
             padding: const EdgeInsets.symmetric(
               vertical: AppPadding.p8,
-              horizontal: AppPadding.p8,
+              horizontal: AppPadding.p4,
             ),
             child: InkWell(
               onTap: onTap,
@@ -102,7 +102,7 @@ class CustomTextField extends StatelessWidget {
                         borderRadius: BorderRadius.circular(5),
                         borderSide: const BorderSide(color: Colors.red, width: 2)),
                     labelText: label,
-                    labelStyle: TextStyle(color: ColorManager.grey1),
+                    labelStyle: TextStyle(color: ColorManager.grey),
                     hintText: hint,
                     hintStyle: TextStyle(color: ColorManager.grey1),
                     contentPadding:

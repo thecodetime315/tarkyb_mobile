@@ -25,7 +25,7 @@ class AppCustomAppbar extends StatelessWidget {
               child: MyText(
             title: "المزيد",
             color: ColorManager.black,
-            size: 189,
+            size: 18,
             fontWeight: FontWeight.bold,
           )),
         ),

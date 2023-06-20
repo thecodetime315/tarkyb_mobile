@@ -7,7 +7,10 @@ import 'package:base_flutter/features/more/screens/terms/terms_view.dart';
 import 'package:base_flutter/features/more/widgets/more_item.dart';
 import 'package:flutter/material.dart';
 
+import '../../auth/screens/profile/profile_view.dart';
 import '../screens/about/about_view.dart';
+import '../screens/change_lang/change_lang_view.dart';
+import '../screens/contact_us/contact_us_view.dart';
 
 class MoreBody extends StatelessWidget {
   const MoreBody();
@@ -29,7 +32,9 @@ class MoreBody extends StatelessWidget {
         MoreItem(
           titleItem: 'الملف الشخصي',
           imageItem: AssetsManager.profile,
-          onTap: () {},
+          onTap: () {
+            NavigationService.navigateTo(ProfileView());
+          },
         ),
         Padding(
           padding: EdgeInsets.symmetric(vertical: 10),
@@ -43,7 +48,9 @@ class MoreBody extends StatelessWidget {
         MoreItem(
           titleItem: 'إعدادات اللفة',
           imageItem: AssetsManager.translate,
-          onTap: () {},
+          onTap: () {
+            NavigationService.navigateTo(ChangeLangView());
+          },
         ),
         Padding(
           padding: EdgeInsets.symmetric(vertical: 10),
@@ -64,7 +71,9 @@ class MoreBody extends StatelessWidget {
         MoreItem(
           titleItem: 'تواصل معنا',
           imageItem: AssetsManager.contactus,
-          onTap: () {},
+          onTap: () {
+            NavigationService.navigateTo(ContactUsView());
+          },
         ),
         MoreItem(
           titleItem: 'سياسة الخصوصية',
