@@ -1,12 +1,19 @@
 const String imagePath = "assets/images";
 
 class AssetsManager {
-  static const String splashLogo = "$imagePath/logo.png";
+  static const String splashLogo = "$imagePath/splashLogo.svg";
+  static const String logo = "$imagePath/logo.png";
+  static const String highPattern = "$imagePath/high_pattern.png";
+  static const String bottomPattern = "$imagePath/bottom_pattern.png";
+  static const String logoWithoutCircle = "$imagePath/logo_without_circle.png";
+  static const String authHeader = "$imagePath/auth_header.png";
+  static const String circle = "$imagePath/circle.png";
   static const String about = "$imagePath/about.svg";
   static const String cart = "$imagePath/cart.svg";
   static const String cartHome = "$imagePath/cartHome.svg";
   static const String code = "$imagePath/code.svg";
   static const String contactus = "$imagePath/contactus.svg";
+  static const String meliukLiuk = "$imagePath/Meliuk-liuk.png";
   static const String logout = "$imagePath/logout.svg";
   static const String more = "$imagePath/more.svg";
   static const String notification_icon = "$imagePath/notification_icon.svg";
@@ -25,4 +32,8 @@ class AssetsManager {
   static const String whatsapp = "$imagePath/whatsapp.svg";
   static const String twitter = "$imagePath/twitter.svg";
   static const String location = "$imagePath/location.svg";
+  static const String page1 = "$imagePath/page1.png";
+  static const String page2 = "$imagePath/page2.png";
+  static const String page3 = "$imagePath/page3.png";
+  static const String page4 = "$imagePath/page4.png";
 }

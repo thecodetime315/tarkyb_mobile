@@ -4,7 +4,6 @@ import '../resource/color_manager.dart';
 import '../resource/font_manager.dart';
 import '../resource/style_manager.dart';
 import '../resource/value_manager.dart';
-import 'my_text.dart';
 
 class CustomTextField extends StatelessWidget {
   final TextEditingController? controller;
@@ -42,79 +41,53 @@ class CustomTextField extends StatelessWidget {
     this.prefixIcon,
     this.width,
     this.focusNode,
-    this.autoFocus, this.upperText,
+    this.autoFocus,
+    this.upperText,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin:  EdgeInsets.symmetric(vertical: AppMargin.m8,horizontal: AppMargin.m2),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          MyText(
-            title: upperText ?? '',
-            size: 14,
-            fontWeight: FontWeight.w600,
-            color: ColorManager.black,
-
-          ),
-          Container(
-            width: width,
-            padding: const EdgeInsets.symmetric(
-              vertical: AppPadding.p8,
-              horizontal: AppPadding.p4,
-            ),
-            child: InkWell(
-              onTap: onTap,
-              child: AbsorbPointer(
-                absorbing: fieldTypes == FieldTypes.clickable,
-                child: TextFormField(
-                  autofocus: autoFocus ?? false,
-                  focusNode: focusNode,
-                  controller: controller,
-                  textInputAction: textInputAction,
-                  keyboardType: type,
-                  readOnly: readOnly,
-                  maxLines: maxLines,
-                  obscureText: fieldTypes == FieldTypes.password,
-                  autofillHints: getAutoFillHints(type),
-                  onChanged: onChanged,
-                  onFieldSubmitted: onFieldSubmitted,
-                  validator: validator,
-                  style: getMediumStyle(
-                      color: ColorManager.primary, fontSize: FontSize.s12),
-                  decoration: InputDecoration(
-                    suffixIcon: suffixIcon,
-                    prefixIcon: prefixIcon,
-                    enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                            color: ColorManager.grey2, width: 1),
-                        borderRadius: BorderRadius.circular(5)),
-                    focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(5),
-                        borderSide: BorderSide(color: ColorManager.primary, width: 2)),
-                    errorBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                            color: ColorManager.grey.withOpacity(.5), width: 1),
-                        borderRadius: BorderRadius.circular(5)),
-                    focusedErrorBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(5),
-                        borderSide: const BorderSide(color: Colors.red, width: 2)),
-                    labelText: label,
-                    labelStyle: TextStyle(color: ColorManager.grey),
-                    hintText: hint,
-                    hintStyle: TextStyle(color: ColorManager.grey1),
-                    contentPadding:
-                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-                    filled: true,
-                    fillColor: ColorManager.white,
-                  ),
-                ),
+      width: width,
+      padding: const EdgeInsets.symmetric(
+        vertical: AppPadding.p12,
+        horizontal: AppPadding.p12,
+      ),
+      child: InkWell(
+        onTap: onTap,
+        child: AbsorbPointer(
+          absorbing: fieldTypes == FieldTypes.clickable,
+          child: TextFormField(
+            autofocus: autoFocus ?? false,
+            focusNode: focusNode,
+            controller: controller,
+            textInputAction: textInputAction,
+            keyboardType: type,
+            readOnly: readOnly,
+            maxLines: maxLines,
+            obscureText: fieldTypes == FieldTypes.password,
+            autofillHints: getAutoFillHints(type),
+            onChanged: onChanged,
+            onFieldSubmitted: onFieldSubmitted,
+            validator: validator,
+            style: getMediumStyle(
+                color: ColorManager.primary, fontSize: FontSize.s12),
+            decoration: InputDecoration(
+              enabledBorder: UnderlineInputBorder(
+                borderSide: BorderSide(color: ColorManager.white),
               ),
+              focusedBorder: UnderlineInputBorder(
+                borderSide: BorderSide(color: ColorManager.white),
+              ),
+              errorBorder: UnderlineInputBorder(
+                borderSide: BorderSide(color: ColorManager.error),
+              ),
+              border: UnderlineInputBorder(),
+              hintText: hint,
+              hintStyle: TextStyle(color: ColorManager.white,fontSize: 14,fontWeight: FontWeight.w400),
             ),
           ),
-        ],
+        ),
       ),
     );
   }

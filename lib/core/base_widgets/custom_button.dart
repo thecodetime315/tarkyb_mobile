@@ -1,7 +1,6 @@
 import 'package:base_flutter/core/resource/color_manager.dart';
 import 'package:flutter/material.dart';
 
-import '../resource/font_manager.dart';
 import 'my_text.dart';
 
 class CustomButton extends StatelessWidget {
@@ -54,7 +53,7 @@ class CustomButton extends StatelessWidget {
                 MaterialStateProperty.all(color ?? ColorManager.primary),
             shape: MaterialStateProperty.all<RoundedRectangleBorder>(
               RoundedRectangleBorder(
-                borderRadius: borderRadius ?? BorderRadius.circular(5.0),
+                borderRadius: borderRadius ?? BorderRadius.circular(15.0),
               ),
             ),
           ),
@@ -74,9 +73,9 @@ class CustomButton extends StatelessWidget {
                   : SizedBox(),
               MyText(
                 title: title,
-                size: fontSize ?? 17,
+                size: fontSize ?? 14,
                 color: textColor ?? ColorManager.white,
-                fontWeight: FontWeight.w600,
+                fontWeight: FontWeight.w500,
               ),
             ],
           ),

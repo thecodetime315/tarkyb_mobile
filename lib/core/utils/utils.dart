@@ -11,7 +11,7 @@ class Utils {
       // setCurrentUserData(data, context);
     } else {
       changeLanguage("ar", context);
-      NavigationService.removeUntil(SelectLangView());
+      NavigationService.removeUntil(OnBoardingView());
       // AutoRouter.of(context).push(SelectUserRoute());
     }
   }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class FontConstants {
-  static const String fontFamily = "URW DIN Arabic";
+  static const String fontFamily = "Alexandria";
 }
 
 class FontWeightManager {

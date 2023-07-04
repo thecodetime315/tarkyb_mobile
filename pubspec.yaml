@@ -43,6 +43,7 @@ dependencies:
   flutter_google_places: ^0.3.0
   google_maps_webservice: ^0.0.20-nullsafety.5
   google_api_headers: ^1.3.0
+  simple_gradient_text: ^1.2.4
   wakelock:
 
 
@@ -75,9 +76,12 @@ flutter:
     - assets/fonts/
 
   fonts:
-     - family: URW DIN Arabic
+     - family: Alexandria
        fonts:
-         - asset: assets/fonts/URWRegular.ttf
+#         - asset: assets/fonts/Alexandria-Bold.ttf
+#         - asset: assets/fonts/Alexandria-SemiBold.ttf
+         - asset: assets/fonts/Alexandria-Medium.ttf
+         - asset: assets/fonts/Alexandria-Regular.ttf
 
 
 

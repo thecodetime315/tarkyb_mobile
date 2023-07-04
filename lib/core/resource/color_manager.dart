@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 
 class ColorManager {
   // todo: add to singleton class
-  static Color primary = HexColor.fromHex("#28C1ED");
+  static Color primary = HexColor.fromHex("#2B4560");
+  static Color secondary = HexColor.fromHex("#009ECF");
   static Color darkGrey = HexColor.fromHex("#525252");
   static Color grey = HexColor.fromHex("#737477");
   static Color lightGrey = HexColor.fromHex("#9E9E9E");
   static Color primaryOpacity70 = HexColor.fromHex("#B3ED9728");
+  static Color textOnBoarding = HexColor.fromHex("#009ECF");
+
 
   // new colors
   static Color darkPrimary = HexColor.fromHex("#d17d11");
