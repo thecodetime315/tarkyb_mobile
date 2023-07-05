@@ -80,8 +80,8 @@ flutter:
        fonts:
 #         - asset: assets/fonts/Alexandria-Bold.ttf
 #         - asset: assets/fonts/Alexandria-SemiBold.ttf
-         - asset: assets/fonts/Alexandria-Medium.ttf
-         - asset: assets/fonts/Alexandria-Regular.ttf
+         - asset: assets/fonts/Alexandria-VariableFont_wght.ttf
+#         - asset: assets/fonts/Alexandria-Regular.ttf
 
 
 

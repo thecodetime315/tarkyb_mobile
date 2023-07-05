@@ -1,6 +1,6 @@
 import 'package:base_flutter/core/resource/assets_manager.dart';
 import 'package:base_flutter/core/resource/navigation_service.dart';
-import 'package:base_flutter/features/presentation/auth/screens/register/widgets/register_form.dart';
+import 'package:base_flutter/features/presentation/auth/screens/register_provider/widgets/register_provider_form.dart';
 import 'package:flutter/material.dart';
 import '../../../../../../core/base_widgets/custom_button.dart';
 import '../../../../../../core/localization/app_localizations.dart';
@@ -9,7 +9,7 @@ import '../../../../../custom_widgets/logo_widget.dart';
 import '../../../widgets/have_account.dart';
 import '../../active_code/active_view.dart';
 
-class RegisterBody extends StatelessWidget {
+class RegisterProviderBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -17,10 +17,10 @@ class RegisterBody extends StatelessWidget {
         children: [
           SizedBox(height: 25,),
           AuthHeader(
-            headerTitle: 'تسجيل مستخدم',
-            headerWidget: Image.asset(AssetsManager.userWithoutCircle,color: ColorManager.white ,),
+            headerTitle: 'تسجيل فني ',
+            headerWidget: Image.asset(AssetsManager.technicalWithoutCircle,color: ColorManager.white,),
           ),
-          RegisterForm(),
+          RegisterProviderForm(),
           CustomButton(
             title: tr(context,'confirm'),
             color: ColorManager.white,

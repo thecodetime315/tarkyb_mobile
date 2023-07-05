@@ -11,6 +11,7 @@ import '../../../../../../core/localization/app_localizations.dart';
 import '../../../../main_navigation_bar/cubits/main_navigation_cubit.dart';
 import '../../../../main_navigation_bar/main_navigation_bar.dart';
 import '../../register/register_view.dart';
+import '../../select_user/select_user_view.dart';
 
 class LoginButtons extends StatelessWidget {
   @override
@@ -52,7 +53,7 @@ class LoginButtons extends StatelessWidget {
                     fontFamily: FontConstants.fontFamily),
                 recognizer: TapGestureRecognizer()
                   ..onTap = () {
-                    NavigationService.navigateTo(RegisterView());
+                    NavigationService.navigateTo(SelectUserView());
                   },
               ),
             ],

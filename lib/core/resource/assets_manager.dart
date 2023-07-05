@@ -36,4 +36,8 @@ class AssetsManager {
   static const String page2 = "$imagePath/page2.png";
   static const String page3 = "$imagePath/page3.png";
   static const String page4 = "$imagePath/page4.png";
+  static const String user = "$imagePath/user.png";
+  static const String technical = "$imagePath/technical.png";
+  static const String technicalWithoutCircle = "$imagePath/technical_without_circle.png";
+  static const String userWithoutCircle = "$imagePath/user_without_circle.png";
 }
