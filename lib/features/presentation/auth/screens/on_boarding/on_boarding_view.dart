@@ -1,3 +1,4 @@
+
 import 'package:base_flutter/core/base_widgets/my_text.dart';
 import 'package:base_flutter/core/helpers/preferences_helper.dart';
 import 'package:base_flutter/core/resource/color_manager.dart';
@@ -44,112 +45,120 @@ class _OnBoardingViewState extends State<OnBoardingView> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorManager.primary,
-      body: PageView.builder(
-        itemCount: onBoardingList.length,
-        controller: _controller,
-        itemBuilder: (context, index) {
-          return Column(
+      body: Column(
+        children: [
+          Stack(
             children: [
-              Stack(
+              Image.asset(AssetsManager.highPattern),
+              Positioned(
+                  height: 100,
+                  right: 0,
+                  left: 2,
+                  bottom: 5,
+                  child: Image.asset(AssetsManager.logoWithoutCircle))
+            ],
+          ),
+          Expanded(
+              child: PageView.builder(
+            itemCount: onBoardingList.length,
+            controller: _controller,
+            itemBuilder: (context, index) {
+              return Column(
                 children: [
-                  Image.asset(AssetsManager.highPattern),
-                  Positioned(
-                      height: 100,
-                      right: 0,
-                      left: 2,
-                      bottom: 5,
-                      child: Image.asset(AssetsManager.logoWithoutCircle))
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  IconButton(
-                    onPressed: () async {
-                      if (index + 1 == onBoardingList.length) {
-                        NavigationService.navigateAndReplacement(LoginView());
-                        Preferences.setBool('firstTime', false);
-                      } else {
-                        _controller.nextPage(
-                            duration: Duration(milliseconds: 300),
-                            curve: Curves.ease);
-                      }
-                    },
-                    icon: Icon(
-                      Icons.arrow_back_ios,
-                      color: ColorManager.white,
-                    ),
-                  ),
-                  Image.asset(
-                    onBoardingList[index].image,
-                    height: 220,
-                  ),
-                  IconButton(
-                    onPressed: () {
-                      _controller.previousPage(
-                        duration: Duration(milliseconds: 300),
-                        curve: Curves.ease,
-                      );
-                    },
-                    icon: Icon(Icons.arrow_forward_ios,
-                        color: ColorManager.white),
-                  ),
-                ],
-              ),
-              Align(
-                alignment: Alignment.bottomCenter,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.7,
-                      child: Center(
-                        child: GradientText(
-                          onBoardingList[index].title,
-                          style: TextStyle(
-                            fontFamily: FontConstants.fontFamily,
-                            fontSize: 26.0,
-                          ),
-                          gradientDirection: GradientDirection.ttb,
-                          colors: [
-                            ColorManager.white,
-                            ColorManager.textOnBoarding
-                          ],
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      IconButton(
+                        onPressed: () async {
+                          if (index + 1 == onBoardingList.length) {
+                            NavigationService.navigateAndReplacement(
+                                LoginView());
+                            Preferences.setBool('firstTime', false);
+                          } else {
+                            _controller.nextPage(
+                                duration: Duration(milliseconds: 300),
+                                curve: Curves.ease);
+                          }
+                        },
+                        icon: Icon(
+                          Icons.arrow_back_ios,
+                          color: ColorManager.white,
                         ),
                       ),
-                    ),
-                    SizedBox(
-                      height: 30,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: onBoardingList.map((url) {
-                        int index = onBoardingList.indexOf(url);
-                        return Container(
-                          width: sliderPage == index ? 20 : 5,
-                          height: 7,
-                          margin: EdgeInsets.symmetric(
-                              vertical: 2.0, horizontal: 2.0),
-                          decoration: BoxDecoration(
-                            borderRadius: sliderPage == index
-                                ? BorderRadius.circular(20)
-                                : BorderRadius.circular(50),
-                            color: sliderPage == index
-                                ? ColorManager.textOnBoarding
-                                : ColorManager.white,
+                      Image.asset(
+                        onBoardingList[index].image,
+                        height: 220,
+                      ),
+                      IconButton(
+                        onPressed: () {
+                          _controller.previousPage(
+                            duration: Duration(milliseconds: 300),
+                            curve: Curves.ease,
+                          );
+                        },
+                        icon: Icon(Icons.arrow_forward_ios,
+                            color: ColorManager.white),
+                      ),
+                    ],
+                  ),
+                  Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.7,
+                          child: Center(
+                            child: GradientText(
+                              onBoardingList[index].title,
+                              style: TextStyle(
+                                fontFamily: FontConstants.fontFamily,
+                                fontSize: 26.0,
+                              ),
+                              gradientDirection: GradientDirection.ttb,
+                              colors: [
+                                ColorManager.white,
+                                ColorManager.textOnBoarding
+                              ],
+                            ),
                           ),
-                        );
-                      }).toList(),
+                        ),
+                        SizedBox(
+                          height: 30,
+                        ),
+
+                        SizedBox(
+                          height: 10,
+                        ),
+                      ],
                     ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                  ],
+                  ),
+                ],
+              );
+            },
+          )),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: onBoardingList.map((url) {
+              int index = onBoardingList.indexOf(url);
+              return Container(
+                width: sliderPage == index ? 20 : 5,
+                height: 7,
+                margin: EdgeInsets.symmetric(
+                    vertical: 2.0, horizontal: 2.0),
+                decoration: BoxDecoration(
+                  borderRadius: sliderPage == index
+                      ? BorderRadius.circular(20)
+                      : BorderRadius.circular(50),
+                  color: sliderPage == index
+                      ? ColorManager.textOnBoarding
+                      : ColorManager.white,
                 ),
-              ),
-            ],
-          );
-        },
+              );
+            }).toList(),
+          ),
+
+        ],
       ),
       bottomNavigationBar: InkWell(
         onTap: () {
@@ -180,3 +189,110 @@ class _OnBoardingViewState extends State<OnBoardingView> {
     );
   }
 }
+//PageView.builder(
+//         itemCount: onBoardingList.length,
+//         controller: _controller,
+//         itemBuilder: (context, index) {
+//           return Column(
+//             children: [
+//               Stack(
+//                 children: [
+//                   Image.asset(AssetsManager.highPattern),
+//                   Positioned(
+//                       height: 100,
+//                       right: 0,
+//                       left: 2,
+//                       bottom: 5,
+//                       child: Image.asset(AssetsManager.logoWithoutCircle))
+//                 ],
+//               ),
+//               Row(
+//                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//                 children: [
+//                   IconButton(
+//                     onPressed: () async {
+//                       if (index + 1 == onBoardingList.length) {
+//                         NavigationService.navigateAndReplacement(LoginView());
+//                         Preferences.setBool('firstTime', false);
+//                       } else {
+//                         _controller.nextPage(
+//                             duration: Duration(milliseconds: 300),
+//                             curve: Curves.ease);
+//                       }
+//                     },
+//                     icon: Icon(
+//                       Icons.arrow_back_ios,
+//                       color: ColorManager.white,
+//                     ),
+//                   ),
+//                   Image.asset(
+//                     onBoardingList[index].image,
+//                     height: 220,
+//                   ),
+//                   IconButton(
+//                     onPressed: () {
+//                       _controller.previousPage(
+//                         duration: Duration(milliseconds: 300),
+//                         curve: Curves.ease,
+//                       );
+//                     },
+//                     icon: Icon(Icons.arrow_forward_ios,
+//                         color: ColorManager.white),
+//                   ),
+//                 ],
+//               ),
+//               Align(
+//                 alignment: Alignment.bottomCenter,
+//                 child: Column(
+//                   mainAxisAlignment: MainAxisAlignment.end,
+//                   children: [
+//                     SizedBox(
+//                       width: MediaQuery.of(context).size.width * 0.7,
+//                       child: Center(
+//                         child: GradientText(
+//                           onBoardingList[index].title,
+//                           style: TextStyle(
+//                             fontFamily: FontConstants.fontFamily,
+//                             fontSize: 26.0,
+//                           ),
+//                           gradientDirection: GradientDirection.ttb,
+//                           colors: [
+//                             ColorManager.white,
+//                             ColorManager.textOnBoarding
+//                           ],
+//                         ),
+//                       ),
+//                     ),
+//                     SizedBox(
+//                       height: 30,
+//                     ),
+//                     Row(
+//                       mainAxisAlignment: MainAxisAlignment.center,
+//                       children: onBoardingList.map((url) {
+//                         int index = onBoardingList.indexOf(url);
+//                         return Container(
+//                           width: sliderPage == index ? 20 : 5,
+//                           height: 7,
+//                           margin: EdgeInsets.symmetric(
+//                               vertical: 2.0, horizontal: 2.0),
+//                           decoration: BoxDecoration(
+//                             borderRadius: sliderPage == index
+//                                 ? BorderRadius.circular(20)
+//                                 : BorderRadius.circular(50),
+//                             color: sliderPage == index
+//                                 ? ColorManager.textOnBoarding
+//                                 : ColorManager.white,
+//                           ),
+//                         );
+//                       }).toList(),
+//                     ),
+//                     SizedBox(
+//                       height: 10,
+//                     ),
+//                   ],
+//                 ),
+//               ),
+//             ],
+//           );
+//         },
+//       )

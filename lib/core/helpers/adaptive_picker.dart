@@ -69,7 +69,7 @@ class AdaptivePicker {
                   },
                   child: MyText(title: "Done",size: 14,color: ColorManager.primary,),
                   style: ElevatedButton.styleFrom(
-                      elevation: 0,
+                    elevation: 0,
                   ),
                 ),
               ],
@@ -144,7 +144,7 @@ class AdaptivePicker {
                     },
                     child: MyText(title: "Done",size: 14,color: ColorManager.primary,),
                     style: ElevatedButton.styleFrom(
-                        elevation: 0,
+                      elevation: 0,
                     ),
                   ),
                 )

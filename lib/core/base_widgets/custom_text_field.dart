@@ -15,6 +15,7 @@ class CustomTextField extends StatelessWidget {
   final Widget? suffixIcon;
   final Widget? prefixIcon;
   final TextInputType type;
+  final Color? textColor;
   final bool readOnly;
   final bool? autoFocus;
   final int? maxLines;
@@ -30,6 +31,7 @@ class CustomTextField extends StatelessWidget {
     required this.validator,
     this.textInputAction = TextInputAction.next,
     this.readOnly = false,
+    this.textColor,
     this.label,
     this.maxLines = 1,
     this.onChanged,
@@ -50,7 +52,7 @@ class CustomTextField extends StatelessWidget {
     return Container(
       width: width,
       padding: const EdgeInsets.symmetric(
-        vertical: AppPadding.p12,
+        vertical: AppPadding.p8,
         horizontal: AppPadding.p12,
       ),
       child: InkWell(
@@ -71,20 +73,25 @@ class CustomTextField extends StatelessWidget {
             onFieldSubmitted: onFieldSubmitted,
             validator: validator,
             style: getMediumStyle(
-                color: ColorManager.primary, fontSize: FontSize.s12),
+                color: textColor ?? ColorManager.primary, fontSize: FontSize.s12),
             decoration: InputDecoration(
-              enabledBorder: UnderlineInputBorder(
-                borderSide: BorderSide(color: ColorManager.white),
-              ),
-              focusedBorder: UnderlineInputBorder(
-                borderSide: BorderSide(color: ColorManager.white),
-              ),
-              errorBorder: UnderlineInputBorder(
-                borderSide: BorderSide(color: ColorManager.error),
-              ),
-              border: UnderlineInputBorder(),
+              prefixIcon: prefixIcon,
+              enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                      color: ColorManager.grey2, width: 1),
+                  borderRadius: BorderRadius.circular(8)),
+              focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  borderSide: BorderSide(color: ColorManager.grey2, width: 2)),
+              errorBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                      color: ColorManager.grey.withOpacity(.5), width: 1),
+                  borderRadius: BorderRadius.circular(8)),
+              focusedErrorBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  borderSide: const BorderSide(color: Colors.red, width: 2)),
               hintText: hint,
-              hintStyle: TextStyle(color: ColorManager.white,fontSize: 14,fontWeight: FontWeight.w400),
+              hintStyle: TextStyle(color: textColor ?? ColorManager.white,fontSize: 14,fontWeight: FontWeight.w400),
             ),
           ),
         ),

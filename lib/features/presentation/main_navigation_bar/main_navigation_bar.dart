@@ -1,11 +1,14 @@
 import 'package:base_flutter/core/resource/assets_manager.dart';
+import 'package:base_flutter/features/presentation/cart/cart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../core/resource/color_manager.dart';
+import '../home/home.dart';
 import '../more/more_view.dart';
+import '../orders/orders_view.dart';
 import 'cubits/main_navigation_cubit.dart';
 
 class MainNavigationBar extends StatefulWidget {
@@ -21,15 +24,9 @@ class _MainNavigationBarState extends State<MainNavigationBar> {
 
   final _pageNavigation = [
     // todo put Screens here
-    Center(
-      child: Text("home"),
-    ),
-    Center(
-      child: Text("orders"),
-    ),
-    Center(
-      child: Text("cart"),
-    ),
+    Home(),
+    OrdersView(),
+    Cart(),
     MoreView()
   ];
 

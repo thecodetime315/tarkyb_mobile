@@ -15,14 +15,19 @@ class RegisterProviderBody extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
-          SizedBox(height: 25,),
+          SizedBox(
+            height: 25,
+          ),
           AuthHeader(
             headerTitle: 'تسجيل فني ',
-            headerWidget: Image.asset(AssetsManager.technicalWithoutCircle,color: ColorManager.white,),
+            headerWidget: Image.asset(
+              AssetsManager.technicalWithoutCircle,
+              color: ColorManager.white,
+            ),
           ),
           RegisterProviderForm(),
           CustomButton(
-            title: tr(context,'confirm'),
+            title: tr(context, 'confirm'),
             color: ColorManager.white,
             textColor: ColorManager.primary,
             onTap: () {

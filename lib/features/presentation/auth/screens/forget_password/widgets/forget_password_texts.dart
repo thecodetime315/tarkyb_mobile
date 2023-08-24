@@ -11,11 +11,10 @@ class ForgetPasswordTexts extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        // SizedBox(height: context.height*0.1,),
-        MyText(title: "نسيت كلمة المرور؟",size: 22,fontWeight: FontWeight.bold,color: ColorManager.black,),
-        SizedBox(height: 7,),
-        MyText(title: "برجاء كتابة رقم الهاتف لارسال كود التحقق",size: 14,fontWeight: FontWeight.normal,color: ColorManager.grey2,),
-        SizedBox(height: 35,),      ],
+        MyText(title: "برجاء كتابة بريدك الإلكتروني لارسال كود التحقق",size: 14,fontWeight: FontWeight.w400,color: ColorManager.white,
+        ),
+        SizedBox(height: 35,),
+      ],
     );
   }
 }

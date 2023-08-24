@@ -19,22 +19,22 @@ class AuthCustomAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: scaffoldColor ?? ColorManager.white,
+      backgroundColor: scaffoldColor ?? ColorManager.primary,
       body: Column(
         children: [
           Container(
             padding: EdgeInsets.only(top: AppPadding.p24,right: 10,left: 10),
-            height: context.height * 0.12,
-            color: ColorManager.white,
+            height: context.height * 0.15,
+            color: ColorManager.primary,
             child: Row(
               children: [
                 needBack ?    IconButton(
                   onPressed: () => NavigationService.back(),
-                  icon: Icon(Icons.adaptive.arrow_back),
+                  icon: Icon(Icons.adaptive.arrow_back,color: ColorManager.white,),
                 ):SizedBox(),
                 MyText(
                   title: title,
-                  color: ColorManager.black,
+                  color: ColorManager.white,
                   size: 17,
                 ),
               ],

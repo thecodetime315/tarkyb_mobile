@@ -2,13 +2,13 @@
 import 'package:base_flutter/features/presentation/auth/screens/profile/widgets/profile_body.dart';
 import 'package:flutter/material.dart';
 
-import '../../../more/widgets/more_scaffold.dart';
+import '../../../../custom_widgets/custom_app_bar.dart';
 
 
 class ProfileView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MoreScaffold(titleScreen: 'الملف الشخصي', body: ProfileBody(),);
+    return CustomAppBar(title: 'الملف الشخصي', child: ProfileBody(),needNotify: false,);
   }
 }

@@ -9,7 +9,7 @@ class ColorManager {
   static Color lightGrey = HexColor.fromHex("#9E9E9E");
   static Color primaryOpacity70 = HexColor.fromHex("#B3ED9728");
   static Color textOnBoarding = HexColor.fromHex("#009ECF");
-
+  static Color detailsContainer = HexColor.fromHex("#3F37B1D6");
 
   // new colors
   static Color darkPrimary = HexColor.fromHex("#d17d11");

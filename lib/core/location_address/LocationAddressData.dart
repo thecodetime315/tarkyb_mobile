@@ -68,7 +68,8 @@ class LocationAddressData {
 
   /// custom button used t get my current location.
 
-  addMarker(BuildContext context, LatLng latLng) async {
+  addMarker(BuildContext context, LatLng latLng) async
+  {
     Uint8List markerImg = await getBytesFromAsset(AssetsManager.location, 5);
     String address = await Utils.getAddress(latLng, context);
     addMarkerCubit.state.data.clear();

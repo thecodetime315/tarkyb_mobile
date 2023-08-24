@@ -6,6 +6,7 @@ class AboutBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
+      padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 15),
       children: [
         // LogoWidget(),
         MyText(

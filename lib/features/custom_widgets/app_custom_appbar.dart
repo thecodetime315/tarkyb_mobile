@@ -1,4 +1,5 @@
 import 'package:base_flutter/core/base_widgets/my_text.dart';
+import 'package:base_flutter/core/extensions/media_query.dart';
 import 'package:base_flutter/core/resource/assets_manager.dart';
 import 'package:base_flutter/core/resource/color_manager.dart';
 import 'package:base_flutter/core/resource/value_manager.dart';
@@ -8,38 +9,60 @@ import 'package:flutter_svg/flutter_svg.dart';
 class AppCustomAppbar extends StatelessWidget {
   final String titlePage;
   final Widget body;
+  final Widget? bottomNavigationBar;
 
-  const AppCustomAppbar({Key? key, required this.titlePage, required this.body})
+  const AppCustomAppbar({Key? key, required this.titlePage, required this.body, this.bottomNavigationBar})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorManager.offWhite,
-      appBar: AppBar(
-        backgroundColor: ColorManager.white,
-        elevation: 0,
-        leading: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: AppPadding.p4),
-          child: Center(
-              child: MyText(
-            title: "المزيد",
-            color: ColorManager.black,
-            size: 18,
-            fontWeight: FontWeight.bold,
-          )),
-        ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: AppPadding.p8),
-            child: SvgPicture.asset(
-              AssetsManager.notification_icon,
-              color: ColorManager.primary,
+      body: Column(
+        children: [
+          Container(
+            height: context.height *0.2,
+            decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin:Alignment(1, 0) ,
+                  end: Alignment(-1.00, -0.00),
+                  colors: [
+                    ColorManager.primary,
+                    ColorManager.secondary,
+                  ],
+                )
             ),
-          )
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(width: context.width*0.1,),
+                Spacer(),
+                Container(
+                  padding: const EdgeInsets.only(top: 5),
+                  child: Center(
+                      child: MyText(
+                        title: titlePage,
+                        color: ColorManager.white,
+                        size: 16,
+                        fontWeight: FontWeight.w600,
+                      ),
+                  ),
+                ),
+                Spacer(),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: AppPadding.p8),
+                  child: SvgPicture.asset(
+                    AssetsManager.notification_icon,
+                    color: ColorManager.white,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Expanded(child: body),
         ],
       ),
-      body: body,
+      bottomNavigationBar: bottomNavigationBar,
     );
   }
 }

@@ -17,7 +17,7 @@ class MoreScaffold extends StatelessWidget {
       backgroundColor: ColorManager.offWhite,
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: ColorManager.white,
+        backgroundColor: ColorManager.primary,
         leadingWidth:30,
         leading: IconButton(padding: EdgeInsets.symmetric(horizontal: 15),icon: Icon(Icons.adaptive.arrow_back,color: ColorManager.black,),onPressed: ()=> NavigationService.back(),),
         title: MyText(title: titleScreen,color: ColorManager.black,size: 18,),

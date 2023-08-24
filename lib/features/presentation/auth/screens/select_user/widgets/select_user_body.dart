@@ -1,7 +1,5 @@
-import 'package:base_flutter/core/base_widgets/custom_button.dart';
 import 'package:base_flutter/core/extensions/media_query.dart';
 import 'package:base_flutter/core/resource/assets_manager.dart';
-import 'package:base_flutter/core/resource/color_manager.dart';
 import 'package:base_flutter/features/presentation/auth/screens/select_user/widgets/select_type_items.dart';
 import 'package:base_flutter/features/presentation/auth/screens/select_user/widgets/select_user_texts.dart';
 import 'package:flutter/material.dart';

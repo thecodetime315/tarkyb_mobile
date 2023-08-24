@@ -1,4 +1,5 @@
 import 'package:base_flutter/core/base_widgets/custom_text_button.dart';
+import 'package:base_flutter/core/resource/color_manager.dart';
 import 'package:base_flutter/core/resource/navigation_service.dart';
 import 'package:flutter/material.dart';
 
@@ -15,6 +16,7 @@ class ForgetPasswordButton extends StatelessWidget {
         NavigationService.navigateTo(ForgetPasswordView());
       },
       alignment: Alignment.topLeft,
+      color: ColorManager.white,
     );
   }
 }
