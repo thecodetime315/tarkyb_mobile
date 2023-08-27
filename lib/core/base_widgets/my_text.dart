@@ -28,6 +28,7 @@ class MyText extends StatelessWidget {
         color: color?? ColorManager.primary,
         fontSize: size?? 12,
         decoration: decoration,
+        wordSpacing: 2,
         fontWeight: fontWeight?? FontWeight.w400,
         fontFamily: FontConstants.fontFamily
       ),

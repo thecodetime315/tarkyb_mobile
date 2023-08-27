@@ -14,7 +14,6 @@ import 'MyApp.dart';
 import 'core/resource/app_strings_manager.dart';
 import 'features/presentation/main_navigation_bar/cubits/main_navigation_cubit.dart';
 
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   if (!kIsWeb) {
@@ -24,24 +23,21 @@ void main() async {
 
     await Firebase.initializeApp();
   }
-  runApp(
-      MultiBlocProvider(
-        providers: [
-
-          BlocProvider(
-            create: (BuildContext context) => LangCubit(),
-          ),
-          BlocProvider(
-            create: (context) => BottomNavCubit(),
-          ),
-          BlocProvider(
-            create: (context) => UserCubit(),
-          ),
-          BlocProvider(
-            create: (context) => AuthCubit(),
-          ),
-        ],
-        child: Phoenix(child: MyApp()),
-      )
-  );
+  runApp(MultiBlocProvider(
+    providers: [
+      BlocProvider(
+        create: (BuildContext context) => LangCubit(),
+      ),
+      BlocProvider(
+        create: (context) => BottomNavCubit(),
+      ),
+      BlocProvider(
+        create: (context) => UserCubit(),
+      ),
+      BlocProvider(
+        create: (context) => AuthCubit(),
+      ),
+    ],
+    child: Phoenix(child: MyApp()),
+  ));
 }

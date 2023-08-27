@@ -1,7 +1,7 @@
-
 import 'package:base_flutter/core/extensions/media_query.dart';
 import 'package:base_flutter/core/resource/color_manager.dart';
 import 'package:base_flutter/core/resource/navigation_service.dart';
+import 'package:base_flutter/features/models/technician_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
@@ -11,11 +11,13 @@ import '../../core/resource/assets_manager.dart';
 import '../presentation/technician_details/technician_details.dart';
 
 class TechnicalPersonCard extends StatelessWidget {
+  final TechnicianModel? model;
 
+  const TechnicalPersonCard({Key? key, this.model}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: (){
+      onTap: () {
         NavigationService.navigateTo(TechnicianDetails());
       },
       child: Container(
@@ -31,16 +33,18 @@ class TechnicalPersonCard extends StatelessWidget {
           ),
         ),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             CachedImage(
-              url:
-              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOKgf1btqasr29ElrKVN80RPZxRDi4qTMnwQ&usqp=CAU",
-              height: 85,
-              width: 80,
+              url: model?.image ?? '',
+              height: 70,
+              width: 70,
               haveRadius: true,
               borderRadius: BorderRadius.circular(5),
-              fit: BoxFit.cover,
+              fit: BoxFit.contain,
+            ),
+            SizedBox(
+              width: 5,
             ),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -48,15 +52,20 @@ class TechnicalPersonCard extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    MyText(
-                      title: "عمر احمد",
-                      color: ColorManager.primary,
-                      size: 12,
-                      fontWeight: FontWeight.w400,
+                    SizedBox(
+                      width: 120,
+                      child: MyText(
+                        title: model?.name ?? '',
+                        color: ColorManager.primary,
+                        size: 11,
+                        fontWeight: FontWeight.w400,
+                      ),
                     ),
-                    SizedBox(width: context.width*0.2,),
+                    SizedBox(
+                      width: context.width * 0.05,
+                    ),
                     RatingBar.builder(
-                      initialRating: 3,
+                      initialRating: double.parse(model?.ratingsAvgRating ?? "0"),
                       minRating: 1,
                       itemSize: 18,
                       direction: Axis.horizontal,
@@ -79,26 +88,15 @@ class TechnicalPersonCard extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Image.asset(AssetsManager.experianceImg,height: 17,),
-                      SizedBox(width: 5,),
-                      MyText(
-                        title: "10 سنوات خبرة",
-                        color: ColorManager.grey2,
-                        size: 10,
-                        fontWeight: FontWeight.w400,
+                      Image.asset(
+                        AssetsManager.locationPng,
+                        height: 17,
                       ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 5.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Image.asset(AssetsManager.locationPng,height: 17,),
-                      SizedBox(width: 5,),
+                      SizedBox(
+                        width: 5,
+                      ),
                       MyText(
-                        title: "الرياض _ الدوحة",
+                        title: model?.name ?? '',
                         color: ColorManager.grey2,
                         size: 10,
                         fontWeight: FontWeight.w400,

@@ -6,7 +6,7 @@ class HomeSlider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: context.height * 0.18,
+      height: context.height * 0.15,
       child: CachedImage(
         url:
             'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsBtC4-m8DnE4ZJkd-xdMZsJ3RMxv1RHLUXg&usqp=CAU',

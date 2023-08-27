@@ -6,10 +6,13 @@ import 'package:flutter/material.dart';
 import '../../../../core/base_widgets/cache_image.dart';
 import '../../../../core/base_widgets/my_text.dart';
 import '../../../../core/resource/color_manager.dart';
+import '../../../models/services_model.dart';
 import '../../category_details/category_details_screen.dart';
 
 class HomeServicesItem extends StatelessWidget {
+  final ServicesModel model;
 
+  const HomeServicesItem({Key? key, required this.model}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -29,14 +32,16 @@ class HomeServicesItem extends StatelessWidget {
           children: [
             CachedImage(
               url:
-              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9PZv_8CWe8nmPJ2aOBO3dPcBDHwd39jzfiBpD5sOh3UIvxMtvqvHY8QjNZw5jWP1wyp8&usqp=CAU",
+              model.image ?? '',
               height: 50,
               width: 50,
+
             ),
             SizedBox(height: 8,),
             MyText(
-              title: "تركيب مكيف سبليت",
+              title: model.name ?? '',
               color: ColorManager.primary,
+              alien: TextAlign.center,
               size: 10,
             ),
           ],

@@ -3,6 +3,9 @@ import 'package:base_flutter/core/resource/color_manager.dart';
 import 'package:flutter/material.dart';
 
 class PolicyBody extends StatelessWidget {
+  final String value;
+
+  const PolicyBody({Key? key, required this.value}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return ListView(
@@ -13,8 +16,7 @@ class PolicyBody extends StatelessWidget {
           color: ColorManager.black,
             size: 12,
             fontWeight: FontWeight.bold,
-            title:
-                """هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.""")
+            title: value),
       ],
     );
   }

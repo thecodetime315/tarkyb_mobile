@@ -8,6 +8,6 @@ class Filter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomAppBar(title: "نتيجة الفلتر", child: FilterBody());
+    return CustomAppBar(title: "نتيجة البحث", child: FilterBody());
   }
 }

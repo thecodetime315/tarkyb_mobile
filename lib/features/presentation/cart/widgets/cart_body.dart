@@ -1,4 +1,3 @@
-
 import 'package:base_flutter/core/resource/color_manager.dart';
 import 'package:base_flutter/features/custom_widgets/custom_gradient_button.dart';
 import 'package:base_flutter/features/presentation/cart/widgets/cart_services.dart';
@@ -24,7 +23,9 @@ class CartBody extends StatelessWidget {
                 ),
                 alignment: Alignment.topRight,
               ),
-              SizedBox(height: 5,),
+              SizedBox(
+                height: 5,
+              ),
               CartServices(),
               Divider(
                 height: 20,
@@ -53,8 +54,8 @@ class CartBody extends StatelessWidget {
       ),
       bottomNavigationBar: CustomGradientButton(
         title: "الانتقال للدفع",
-        margin: EdgeInsets.symmetric(horizontal: 25,vertical: 15),
-        onTap: (){},
+        margin: EdgeInsets.symmetric(horizontal: 25, vertical: 15),
+        onTap: () {},
       ),
     );
   }

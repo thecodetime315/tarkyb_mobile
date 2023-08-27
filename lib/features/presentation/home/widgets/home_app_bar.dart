@@ -10,7 +10,7 @@ class HomeAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: context.height * 0.15,
+      height: context.height * 0.12,
       decoration: BoxDecoration(
           gradient: LinearGradient(
         begin: Alignment(1, 0),
@@ -21,29 +21,32 @@ class HomeAppBar extends StatelessWidget {
         ],
       )
       ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            width: context.width * 0.1,
-          ),
-          Spacer(),
-          Container(
-            padding: const EdgeInsets.only(top: 5),
-            child: Image.asset(
-              AssetsManager.logoWithoutCircle,
-              scale: 2.5,
+      child: Padding(
+        padding: const EdgeInsets.only(top: 18.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              width: context.width * 0.1,
             ),
-          ),
-          Spacer(),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: AppPadding.p8),
-            child: SvgPicture.asset(
-              AssetsManager.notification_icon,
-              color: ColorManager.white,
+            Spacer(),
+            Container(
+              padding: const EdgeInsets.only(top: 5),
+              child: Image.asset(
+                AssetsManager.logoWithoutCircle,
+                scale: 2.5,
+              ),
             ),
-          ),
-        ],
+            Spacer(),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: AppPadding.p8),
+              child: SvgPicture.asset(
+                AssetsManager.notification_icon,
+                color: ColorManager.white,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

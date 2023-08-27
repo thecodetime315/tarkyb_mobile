@@ -71,7 +71,7 @@ class DropdownButtonCustom<T> extends StatelessWidget {
         isDense: false,
         validator: validator,
         style: TextStyle(
-          fontSize: 12,
+          fontSize: 11,
           fontWeight: FontWeight.w400,
           color: Colors.black,
           fontFamily: FontConstants.fontFamily,

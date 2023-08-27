@@ -4,14 +4,15 @@ import 'package:flutter/material.dart';
 
 
 class AboutView extends StatelessWidget {
-  const AboutView();
+  final String value;
+  const AboutView(this.value);
 
   @override
   Widget build(BuildContext context) {
     return CustomAppBar(
       needNotify: false,
       title: "من نحن",
-      child: AboutBody(),
+      child: AboutBody(value: value,),
     );
   }
 }

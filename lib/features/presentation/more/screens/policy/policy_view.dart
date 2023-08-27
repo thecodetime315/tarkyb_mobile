@@ -6,13 +6,15 @@ import 'package:flutter/material.dart';
 import '../../../../custom_widgets/custom_app_bar.dart';
 
 class PolicyView extends StatelessWidget {
+final String value;
 
+  const PolicyView({Key? key, required this.value}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return CustomAppBar(
-      title: "سياسية الخصوصية",
+      title: "الشروط والاحكام",
       needNotify: false,
-      child: PolicyBody(),
+      child: PolicyBody(value: value,),
     );
   }
 }
