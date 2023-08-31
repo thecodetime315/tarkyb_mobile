@@ -13,13 +13,13 @@ class LoginCubit extends Cubit<LoginState> {
   static LoginCubit get(context) => BlocProvider.of(context);
   @override
   Future<void> close() {
-    email.dispose();
+    phone.dispose();
     passwordController.dispose();
     return super.close();
   }
 
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  TextEditingController email = TextEditingController();
+  TextEditingController phone = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
   login(BuildContext context) async {
@@ -27,7 +27,7 @@ class LoginCubit extends Cubit<LoginState> {
       emit(state.copyWith(loginState: RequestState.loading));
       var result = await di
           .getIt<AuthBaseRepo>()
-          .login(email.text, passwordController.text);
+          .login(phone.text, passwordController.text);
       if (result) {
         emit(state.copyWith(loginState: RequestState.loaded));
         SnackBarHelper.showBasicSnack(msg: "تم تسجيل الدخول بنجاح");

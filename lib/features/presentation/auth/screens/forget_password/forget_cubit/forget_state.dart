@@ -1,10 +1,12 @@
 part of 'forget_cubit.dart';
 
-abstract class ForgetState extends Equatable {
-  const ForgetState();
+ class ForgetState extends Equatable {
+   final RequestState forgetState;
+  const ForgetState({this.forgetState = RequestState.init});
+   ForgetState withCopy({RequestState? forgetState}){
+     return ForgetState(forgetState: forgetState ?? this.forgetState);
+   }
+  @override
+  List<Object?> get props => [forgetState];
 }
 
-class ForgetInitial extends ForgetState {
-  @override
-  List<Object> get props => [];
-}

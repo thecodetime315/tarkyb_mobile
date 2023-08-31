@@ -16,11 +16,11 @@ class LoginForm extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CustomTextField(
-              validator: (value) => value?.validateEmail(context),
+              validator: (value) => value?.validatePhone(context),
               fieldTypes: FieldTypes.normal,
-              type: TextInputType.emailAddress,
-              controller: context.read<LoginCubit>().email,
-              hint: tr(context, 'mail'),
+              type: TextInputType.phone,
+              controller: context.read<LoginCubit>().phone,
+              hint: tr(context, 'phone'),
               textColor: ColorManager.white,
             ),
             CustomTextField(

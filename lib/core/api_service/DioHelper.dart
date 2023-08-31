@@ -253,6 +253,7 @@ class DioHelper {
 
 
   showErrorMessage(Response? response){
+    String? phone = Preferences.getString("phone");
     if (response==null) {
       log("failed response Check Server");
       SnackBarHelper.showBasicSnack( msg: "Check Server",);
@@ -266,18 +267,12 @@ class DioHelper {
           SnackBarHelper.showBasicSnack( msg: data["message"].toString());
           break;
         case 422:
-          if(data["errors"]!=null){
-            Map<String,dynamic> errors = data["message"];
-            log("response errors $errors");
-            errors.forEach((key, value){
-              List<String> lst = List<String>.from(value.map((e) => e));
-              lst.forEach((e) {
-                SnackBarHelper.showBasicSnack( msg: e);
-              });
-            });
-          }else{
             SnackBarHelper.showBasicSnack( msg: data["message"].toString());
-          }
+
+          break;
+        case 433:
+          SnackBarHelper.showBasicSnack( msg: "رقم الهاتف غير مفعل! برجاء قم بتأكيد الهاتف");
+          NavigationService.navigateTo(ActiveView(phone: phone!, fromWhere: "login"));
           break;
         case 401:
           tokenExpired();

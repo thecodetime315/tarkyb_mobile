@@ -1,4 +1,3 @@
-import '../models/notifications_model.dart';
 import 'notifications_repo_impl.dart';
 
 class NotificationsRepo {

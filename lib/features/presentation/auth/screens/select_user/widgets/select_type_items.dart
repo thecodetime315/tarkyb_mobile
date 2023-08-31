@@ -1,7 +1,6 @@
 import 'package:base_flutter/core/extensions/media_query.dart';
 import 'package:base_flutter/core/resource/navigation_service.dart';
 import 'package:base_flutter/features/presentation/auth/screens/register/register_view.dart';
-import 'package:base_flutter/features/presentation/auth/screens/register_provider/register_provider_view.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../../core/base_widgets/my_text.dart';
@@ -49,7 +48,7 @@ class SelectTypeItems extends StatelessWidget {
             children: [
               InkWell(
                 onTap:(){
-                  NavigationService.navigateTo(RegisterProviderView());
+                  // NavigationService.navigateTo(RegisterProviderView());
                 },
                 child: Container(
                   height: context.height * 0.2,

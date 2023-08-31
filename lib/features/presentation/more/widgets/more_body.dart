@@ -16,7 +16,6 @@ import '../../auth/screens/profile/profile_view.dart';
 import '../screens/about/about_view.dart';
 import '../screens/contact_us/contact_us_view.dart';
 import '../screens/policy/policy_view.dart';
-import '../screens/terms/terms_view.dart';
 import 'package:base_flutter/core/injection/get_injection.dart' as di;
 
 

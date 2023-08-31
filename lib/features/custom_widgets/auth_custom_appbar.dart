@@ -12,9 +12,10 @@ class AuthCustomAppBar extends StatelessWidget {
   final String title;
   final bool needBack;
   final Widget child;
+  final Widget? bottomNavBar;
   final Color? scaffoldColor;
 
-  const AuthCustomAppBar({Key? key, required this.title, required this.needBack, required this.child, this.scaffoldColor}) : super(key: key);
+  const AuthCustomAppBar({Key? key, required this.title, required this.needBack, required this.child, this.scaffoldColor, this.bottomNavBar}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -40,9 +41,10 @@ class AuthCustomAppBar extends StatelessWidget {
               ],
             ),
           ),
-          child,
+           child,
         ],
       ),
+      bottomNavigationBar:bottomNavBar ,
     );
   }
 }

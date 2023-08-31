@@ -8,7 +8,7 @@ class CartServices extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: List.generate(15, (index) => ServicesItem()),
+      children: List.generate(5, (index) => ServicesItem()),
     );
   }
 }

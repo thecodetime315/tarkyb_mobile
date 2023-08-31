@@ -12,13 +12,15 @@ import '../presentation/technician_details/technician_details.dart';
 
 class TechnicalPersonCard extends StatelessWidget {
   final TechnicianModel? model;
+  final int isVip;
 
-  const TechnicalPersonCard({Key? key, this.model}) : super(key: key);
+
+  const TechnicalPersonCard({Key? key, this.model, this.isVip = 0}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        NavigationService.navigateTo(TechnicianDetails());
+        NavigationService.navigateTo(TechnicianDetails(id: model?.id ?? 0, isVip: isVip,));
       },
       child: Container(
         width: 325,

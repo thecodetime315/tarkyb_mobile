@@ -68,6 +68,7 @@ class DropdownButtonCustom<T> extends StatelessWidget {
                   borderRadius: BorderRadius.circular(8),
                   borderSide: const BorderSide(color: Colors.red, width: 2)),
             ),
+
         isDense: false,
         validator: validator,
         style: TextStyle(

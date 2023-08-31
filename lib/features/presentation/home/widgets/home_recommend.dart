@@ -1,8 +1,6 @@
 import 'package:base_flutter/core/base_widgets/my_text.dart';
-import 'package:base_flutter/core/helpers/app_loader_helper.dart';
 import 'package:base_flutter/core/resource/color_manager.dart';
 import 'package:base_flutter/core/resource/navigation_service.dart';
-import 'package:base_flutter/core/utils/enums.dart';
 import 'package:base_flutter/features/presentation/home/cubit/home_cubit/home_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -29,7 +27,9 @@ class HomeRecommend extends StatelessWidget {
             ),
             InkWell(
                 onTap: () {
-                  NavigationService.navigateTo(AllRecommendTechnicians(technicianList: cubit.state.technicianList,));
+                  NavigationService.navigateTo(AllRecommendTechnicians(
+                    technicianList: cubit.state.technicianList,
+                  ));
                 },
                 child: MyText(
                   title: "عرض الكل",
@@ -44,11 +44,19 @@ class HomeRecommend extends StatelessWidget {
           height: 12,
         ),
         // if(cubit.state.mostRatedState == RequestState.loaded)
-          cubit.state.technicianList != [] ?
-            Column(
-              children: List.generate(3, (index) => TechnicalPersonCard(model: cubit.state.technicianList[index],)),
-            ) : Center(child: MyText(title: "لا يوجد بيانات",),),
-
+        cubit.state.technicianList.length > 0
+            ? Column(
+                children: List.generate(
+                    3,
+                    (index) => TechnicalPersonCard(
+                          model: cubit.state.technicianList[index],
+                        )),
+              )
+            : Center(
+                child: MyText(
+                  title: "لا يوجد بيانات",
+                ),
+              ),
 
         // if(cubit.state.mostRatedState == RequestState.loading)
         //   Center(child: AppLoaderHelper.showSimpleLoading(),),

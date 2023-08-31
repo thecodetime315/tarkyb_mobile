@@ -12,6 +12,7 @@ import 'core/helpers/preferences_helper.dart';
 import 'core/localization/lang_cubit/lang_cubit.dart';
 import 'MyApp.dart';
 import 'core/resource/app_strings_manager.dart';
+import 'features/presentation/filter/cubits/filter_cubit.dart';
 import 'features/presentation/main_navigation_bar/cubits/main_navigation_cubit.dart';
 
 void main() async {
@@ -36,6 +37,9 @@ void main() async {
       ),
       BlocProvider(
         create: (context) => AuthCubit(),
+      ),
+      BlocProvider(
+        create: (context) => FilterCubit(),
       ),
     ],
     child: Phoenix(child: MyApp()),

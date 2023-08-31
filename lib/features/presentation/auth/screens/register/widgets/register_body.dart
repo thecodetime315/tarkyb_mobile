@@ -14,7 +14,6 @@ import '../register_cubit/register_cubit.dart';
 class RegisterBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // todo : finish register cubit with buttons
     return BlocProvider(
       create: (context) => RegisterCubit(),
       child: SingleChildScrollView(

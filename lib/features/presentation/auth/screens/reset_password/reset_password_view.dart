@@ -9,7 +9,7 @@ class ResetPasswordView extends StatelessWidget {
   Widget build(BuildContext context) {
     return AuthCustomAppBar(
         title: "استعادة كلمة المرور",
-        needBack: true,
+        needBack: false,
         child: ResetPasswordBody());
   }
 }

@@ -11,7 +11,7 @@ class ForgetPasswordTexts extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        MyText(title: "برجاء كتابة بريدك الإلكتروني لارسال كود التحقق",size: 14,fontWeight: FontWeight.w400,color: ColorManager.white,
+        MyText(title: "برجاء كتابة رقم هاتفك لارسال كود التحقق",size: 14,fontWeight: FontWeight.w400,color: ColorManager.white,
         ),
         SizedBox(height: 35,),
       ],

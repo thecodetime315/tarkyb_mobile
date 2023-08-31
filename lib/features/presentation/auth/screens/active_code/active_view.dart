@@ -4,9 +4,12 @@ import 'package:base_flutter/features/presentation/auth/screens/active_code/widg
 import 'package:flutter/material.dart';
 
 class ActiveView extends StatelessWidget {
+  final String phone;
+  final String fromWhere;
+  const ActiveView({Key? key, required this.phone, required this.fromWhere}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return AuthCustomAppBar(
-        title: tr(context,"register"), needBack: false, child: ActiveBody());
+        title: tr(context, "activeCode"), needBack: false, child: ActiveBody(fromWhere: fromWhere,phone: phone,));
   }
 }

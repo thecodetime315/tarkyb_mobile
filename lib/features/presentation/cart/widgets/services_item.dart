@@ -33,21 +33,21 @@ class ServicesItem extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          CachedImage(url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTlaCezvY_1lKlFT4NzQb5np7wZQ1TlROCyg&usqp=CAU",height: 40,width: 40,
+          CachedImage(url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTlaCezvY_1lKlFT4NzQb5np7wZQ1TlROCyg&usqp=CAU",height: 30,width: 30,
             borderRadius: BorderRadius.circular(4),),
           MyText(
             title: "تركيب مكيف سبليت",
-            size: 12,
+            size: 11,
           ),
           MyText(
             title: "150 ر.س",
-            size: 12,
+            size: 11,
           ),
           Row(
             children: [
               Container(
-                height: 25,
-                width: 25,
+                height: 30,
+                width: 30,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(4),
                   gradient:  LinearGradient(
@@ -59,7 +59,7 @@ class ServicesItem extends StatelessWidget {
                     ],
                   ),
                 ),
-                child: Center(child: MyText(title: "+",color: ColorManager.white,size: 20,),),
+                child: Center(child: MyText(title: "+",color: ColorManager.white,size: 25,),),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 5.0),
@@ -69,13 +69,13 @@ class ServicesItem extends StatelessWidget {
                 ),
               ),
               Container(
-                height: 25,
-                width: 25,
+                height: 30,
+                width: 30,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(4),
                   border: Border.all(color: ColorManager.grey2.withOpacity(0.7)),
                 ),
-                child: Center(child: MyText(title: "-",color: ColorManager.grey2,size: 20,),),
+                child: Center(child: MyText(title: "-",color: ColorManager.grey2,size: 25,),),
               ),
             ],
           ),
