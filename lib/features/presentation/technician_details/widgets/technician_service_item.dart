@@ -7,6 +7,7 @@ import '../../../../core/base_widgets/my_text.dart';
 import '../../../../core/generic_cubit/generic_cubit.dart';
 import '../../../../core/resource/color_manager.dart';
 import '../../../models/technician_details_model.dart';
+import '../cubits/tech_details_cubit.dart';
 
 class TechnicianServiceItem extends StatelessWidget {
   final Services? services;
@@ -15,6 +16,7 @@ class TechnicianServiceItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var cubit = context.read<TechDetailsCubit>();
     final GenericCubit<bool> checkBoxCubit = GenericCubit(false);
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
@@ -34,8 +36,12 @@ class TechnicianServiceItem extends StatelessWidget {
                     onChanged: (val) {
                       checkBoxCubit.onUpdateData(val!);
                       if(val == true){
+                        cubit.servicesId?.add(services!.id!);
+                        cubit.pricesOfServices?.add(num.parse(services?.price ?? ''));
                         log("service ID is : ${services?.id}");
                       }else{
+                        cubit.servicesId?.remove(services!.id!);
+
                         log("service ID is deleted");
                       }
                     });

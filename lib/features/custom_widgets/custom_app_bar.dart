@@ -12,18 +12,21 @@ class CustomAppBar extends StatelessWidget {
   final String title;
   final Widget child;
   final bool? needNotify;
+   final GlobalKey<ScaffoldState>? scaffoldKey;
   final Widget? bottomNavigationBar;
 
   const CustomAppBar(
       {Key? key,
       required this.title,
       required this.child,
-      this.needNotify = true, this.bottomNavigationBar})
+      this.needNotify = true, this.bottomNavigationBar, this.scaffoldKey})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: scaffoldKey,
+      resizeToAvoidBottomInset: true,
       backgroundColor: ColorManager.white,
       body: Column(
         children: [

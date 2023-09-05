@@ -16,7 +16,7 @@ class HomeServicesItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: ()=> NavigationService.navigateTo(CategoryDetailsScreen()),
+      onTap: ()=> NavigationService.navigateTo(CategoryDetailsScreen(title: model.name ?? "", id: model.id ?? 0,)),
       child: Container(
         width: context.width*0.3,
         height: 100,

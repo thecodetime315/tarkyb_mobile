@@ -6,12 +6,17 @@ import 'package:base_flutter/core/resource/navigation_service.dart';
 import 'package:base_flutter/features/presentation/order_details/order_details.dart';
 import 'package:flutter/material.dart';
 
+import '../../../models/orders_model.dart';
+
 class OrderItem extends StatelessWidget {
+  final OrdersModel orders;
+
+  const OrderItem({Key? key, required this.orders}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        NavigationService.navigateTo(OrderDetails());
+        NavigationService.navigateTo(OrderDetails(id: orders.id ?? 0,));
       },
       child: Container(
         margin: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
@@ -24,8 +29,8 @@ class OrderItem extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Container(
-              height: 90,
-              width: 90,
+              height: 70,
+              width: 70,
               padding: EdgeInsets.all(10),
               margin: EdgeInsets.symmetric(horizontal: 4),
               decoration: BoxDecoration(
@@ -34,7 +39,7 @@ class OrderItem extends StatelessWidget {
               ),
               child: CachedImage(
                 url:
-                    "https://img.youm7.com/ArticleImgs/2020/4/28/124753-94308136_2857795544334280_5857949686500950016_o.jpg",
+                    "${orders.services?[0].image}",
                 borderRadius: BorderRadius.circular(15),
                 height: 60,
                 width: 50,
@@ -57,7 +62,7 @@ class OrderItem extends StatelessWidget {
                       SizedBox(
                         width: context.width*0.3,
                         child: MyText(
-                          title: "تركيب مكيف سبليت",
+                          title: "${orders.services?[0].name}",
                           fontWeight: FontWeight.w400,
                           size: 10,
                           overflow: TextOverflow.ellipsis,
@@ -66,28 +71,9 @@ class OrderItem extends StatelessWidget {
                       ),
                       Spacer(),
                       MyText(
-                        title: "منذ ساعتين",
+                        title: "${orders.datetime}",
                         color: ColorManager.grey,
                         size: 9,
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 8,
-                  ),
-                  Row(
-                    children: [
-                      MyText(
-                        title: "رقم الطلب : ",
-                        color: ColorManager.primary,
-                        fontWeight: FontWeight.w400,
-                        size: 12,
-                      ),
-                      MyText(
-                        title: "258873471#",
-                        fontWeight: FontWeight.w400,
-                        size: 11,
-                        color: ColorManager.grey2,
                       ),
                     ],
                   ),
@@ -104,7 +90,6 @@ class OrderItem extends StatelessWidget {
                     children: [
                       Row(
                         children: [
-                          // SvgPicture.asset(AssetsManager.box),
                           SizedBox(
                             width: 5,
                           ),
@@ -115,7 +100,7 @@ class OrderItem extends StatelessWidget {
                             fontWeight: FontWeight.w400,
                           ),
                           MyText(
-                            title: "قيد التنفيذ",
+                            title: "${orders.services?[0].status}",
                             color: ColorManager.grey2,
                             size: 11,
                             fontWeight: FontWeight.w400,

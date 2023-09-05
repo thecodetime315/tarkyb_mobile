@@ -14,7 +14,6 @@ import '../../../../../../core/resource/color_manager.dart';
 import '../../../../../../core/resource/value_manager.dart';
 import '../../../../../../core/utils/enums.dart';
 import '../../../../../custom_widgets/logo_widget.dart';
-import '../../reset_password/reset_password_view.dart';
 import 'forget_password_texts.dart';
 
 class ForgetPasswordBody extends StatelessWidget {

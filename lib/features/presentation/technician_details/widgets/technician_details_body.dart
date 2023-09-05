@@ -1,13 +1,9 @@
 import 'package:base_flutter/core/base_widgets/cache_image.dart';
 import 'package:base_flutter/core/base_widgets/my_text.dart';
 import 'package:base_flutter/core/extensions/media_query.dart';
-import 'package:base_flutter/core/resource/assets_manager.dart';
 import 'package:base_flutter/features/custom_widgets/custom_app_bar.dart';
 import 'package:base_flutter/features/presentation/technician_details/cubits/tech_details_cubit.dart';
-import 'package:base_flutter/features/presentation/technician_details/widgets/technician_info.dart';
-import 'package:base_flutter/features/presentation/technician_details/widgets/technician_times.dart';
 import 'package:base_flutter/features/presentation/technician_details/widgets/technician_tabs.dart';
-import 'package:base_flutter/features/presentation/technician_details/widgets/technician_texts_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -16,7 +12,6 @@ import '../tabs/client_reviews_tab.dart';
 import '../tabs/desc_tab.dart';
 import '../tabs/services_tab.dart';
 import '../tabs/work_time_tab.dart';
-import 'client_opinion.dart';
 
 class TechnicianDetailsBody extends StatelessWidget {
   @override

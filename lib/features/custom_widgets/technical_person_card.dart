@@ -3,11 +3,13 @@ import 'package:base_flutter/core/resource/color_manager.dart';
 import 'package:base_flutter/core/resource/navigation_service.dart';
 import 'package:base_flutter/features/models/technician_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 import '../../core/base_widgets/cache_image.dart';
 import '../../core/base_widgets/my_text.dart';
 import '../../core/resource/assets_manager.dart';
+import '../presentation/technician_details/cubits/tech_details_cubit.dart';
 import '../presentation/technician_details/technician_details.dart';
 
 class TechnicalPersonCard extends StatelessWidget {
@@ -20,7 +22,10 @@ class TechnicalPersonCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        NavigationService.navigateTo(TechnicianDetails(id: model?.id ?? 0, isVip: isVip,));
+        NavigationService.navigateTo(BlocProvider(
+  create: (context) => TechDetailsCubit()..getTechDetails(model?.id ?? 0,isVip),
+  child: TechnicianDetails(id: model?.id ?? 0, isVip: isVip,),
+));
       },
       child: Container(
         width: 325,
@@ -98,7 +103,7 @@ class TechnicalPersonCard extends StatelessWidget {
                         width: 5,
                       ),
                       MyText(
-                        title: model?.name ?? '',
+                        title: model?.city ?? '',
                         color: ColorManager.grey2,
                         size: 10,
                         fontWeight: FontWeight.w400,

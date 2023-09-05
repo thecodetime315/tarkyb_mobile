@@ -3,10 +3,8 @@ import 'package:base_flutter/core/resource/assets_manager.dart';
 import 'package:base_flutter/core/resource/color_manager.dart';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/base_widgets/my_text.dart';
-import '../cubits/notifications_cubit.dart';
 import '../models/notifications_model.dart';
 
 class BuildNotificationItem extends StatelessWidget {

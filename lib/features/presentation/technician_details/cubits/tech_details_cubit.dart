@@ -11,12 +11,16 @@ part 'tech_details_state.dart';
 class TechDetailsCubit extends Cubit<TechDetailsState> {
   TechDetailsCubit() : super(TechDetailsState());
 
+  List<int>? servicesId = [];
+  List<num>? pricesOfServices = [];
+  int? technicianId = 0;
   TechBaseRepo techRepo = TechRepoImpl();
   getTechDetails(int id,int vip)async {
     emit(state.copyWith(techStates: RequestState.loading));
     var result = await techRepo.techDetails(id,vip);
     if(result != null){
       emit(state.copyWith(techStates: RequestState.loaded,technicianDetailsModel: result));
+      technicianId = result.id ?? 0;
     }
   }
 }

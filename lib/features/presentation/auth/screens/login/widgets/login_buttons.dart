@@ -20,7 +20,7 @@ class LoginButtons extends StatelessWidget {
       children: [
         BlocBuilder<LoginCubit, LoginState>(
           builder: (context, state) {
-           if(state.loginState == RequestState.init){
+           if(state.loginState == RequestState.init || state.loginState == RequestState.init){
              return CustomButton(
                title: tr(context, 'login'),
                color: ColorManager.white,
@@ -38,11 +38,6 @@ class LoginButtons extends StatelessWidget {
            return Container();
           },
         ),
-        // CustomTextButton(
-        //   title: "تخطي التسجيل",
-        //   onTap: () {},
-        //   color: ColorManager.grey2,
-        // ),
         Text.rich(
           TextSpan(
             text: tr(context, "don'tHaveAccount"),

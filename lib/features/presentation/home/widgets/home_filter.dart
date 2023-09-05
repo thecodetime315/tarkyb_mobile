@@ -7,7 +7,6 @@ import 'package:base_flutter/core/generic_cubit/generic_cubit.dart';
 import 'package:base_flutter/core/helpers/app_loader_helper.dart';
 import 'package:base_flutter/core/helpers/validator.dart';
 import 'package:base_flutter/core/resource/color_manager.dart';
-import 'package:base_flutter/core/resource/navigation_service.dart';
 import 'package:base_flutter/core/utils/enums.dart';
 import 'package:base_flutter/features/models/areas_model.dart';
 import 'package:base_flutter/features/models/cities_model.dart';
@@ -20,7 +19,6 @@ import '../../../../core/base_widgets/custom_drop_down.dart';
 
 import '../../../custom_widgets/custom_gradient_button.dart';
 import '../../../models/services_model.dart';
-import '../../filter/filter.dart';
 
 class HomeFilter extends StatelessWidget {
   final GenericCubit<bool> checkCubit = GenericCubit(false);

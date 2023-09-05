@@ -19,7 +19,7 @@ class AuthRepoImpl extends AuthBaseRepo {
     };
     Preferences.setString("phone", phone);
     var data = await DioHelper().post(url: AppStringsManager.login, body: body);
-    if (data["data"]["user"] != null) {
+    if (data != null) {
       Utils.manipulateLoginData(data["data"]["user"], data["data"]['token']);
       return true;
     } else {

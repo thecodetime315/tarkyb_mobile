@@ -2,10 +2,17 @@ import 'package:base_flutter/core/base_widgets/cache_image.dart';
 import 'package:base_flutter/core/base_widgets/my_text.dart';
 import 'package:base_flutter/core/extensions/media_query.dart';
 import 'package:base_flutter/core/resource/color_manager.dart';
+import 'package:base_flutter/features/presentation/order_details/cubit/order_details_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../models/order_details_model.dart';
 
 
 class OrderDetailsServiceItem extends StatelessWidget {
+  final Services? orderService;
+
+  const OrderDetailsServiceItem({Key? key,  this.orderService}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -29,18 +36,19 @@ class OrderDetailsServiceItem extends StatelessWidget {
         children: [
           CachedImage(
             url:
-                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTlaCezvY_1lKlFT4NzQb5np7wZQ1TlROCyg&usqp=CAU",
-            height: 80,
-            width: 80,
+                "${orderService?.image}",
+            height: 50,
+            width: 50,
             borderRadius: BorderRadius.circular(4),
           ),
+          SizedBox(width: 5,),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              MyText(title: "تركيب مكيف سبليت",size: 12,),
+              MyText(title: "${orderService?.name}",size: 11,),
               SizedBox(height: 10,),
-              MyText(title: "عدد :2",size: 12,),
+              MyText(title: " عدد : ${orderService?.orderQuantity}",size: 11,),
 
             ],
           ),
@@ -50,9 +58,9 @@ class OrderDetailsServiceItem extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
 
             children: [
-              MyText(title: "100ر.س",size: 12,),
+              MyText(title: "${orderService?.price} ر.س ",size: 11,),
               SizedBox(height: 10,),
-              MyText(title: "الاجمالي : 200ر.س",size: 12,),
+              MyText(title: " الاجمالي : ${orderService!.price! * orderService!.orderQuantity!} ر.س ",size: 11,),
 
             ],
           ),

@@ -21,7 +21,7 @@ class AppCustomAppbar extends StatelessWidget {
       body: Column(
         children: [
           Container(
-            height: context.height *0.2,
+            height: context.height *0.15,
             decoration: BoxDecoration(
                 gradient: LinearGradient(
                   begin:Alignment(1, 0) ,

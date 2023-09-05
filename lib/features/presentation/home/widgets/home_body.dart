@@ -11,32 +11,28 @@ import 'home_serivces.dart';
 import 'home_slider.dart';
 
 class HomeBody extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) =>
-      HomeCubit()
-        ..getAllHomeData(),
+      create: (context) => HomeCubit()..getAllHomeData(),
       child: BlocBuilder<HomeCubit, HomeState>(
         builder: (context, state) {
-          if(state.mostRatedState == RequestState.loading)
-            return Center(child: AppLoaderHelper.showSimpleLoading(),);
-          if(state.mostRatedState == RequestState.loaded)
+          if (state.mostRatedState == RequestState.loading)
+            return Center(
+              child: AppLoaderHelper.showSimpleLoading(),
+            );
+          if (state.mostRatedState == RequestState.loaded)
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 HomeAppBar(),
                 HomeSlider(),
-                Expanded(child:
-                ListView(
-                  padding: EdgeInsets.symmetric(horizontal: 5, vertical: 15),
-                  children: [
-                    HomeFilter(),
-                    HomeServices(),
-                    HomeRecommend()
-                  ],
-                ),)
+                Expanded(
+                  child: ListView(
+                    padding: EdgeInsets.symmetric(horizontal: 5, vertical: 15),
+                    children: [HomeFilter(), HomeServices(), HomeRecommend()],
+                  ),
+                )
               ],
             );
           return SizedBox();

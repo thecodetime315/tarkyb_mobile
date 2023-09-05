@@ -6,7 +6,7 @@ abstract class UserState extends Equatable {
   const UserState({required this.model,required this.changed});}
 
 class UserInitial extends UserState {
-  UserInitial() : super(model: UserModel(name: '',email: '',phone: ''),changed: false);
+  UserInitial() : super(model: UserModel(id: 0,name: '',email: '',phone: ''),changed: false);
   @override
   List<Object> get props => [model,changed];
 }

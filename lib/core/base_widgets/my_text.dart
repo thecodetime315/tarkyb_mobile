@@ -23,12 +23,14 @@ class MyText extends StatelessWidget {
     return Text(
       title,
       textAlign: alien,
+      maxLines: 2,
       // textScaleFactor: context.locale.languageCode=="ar"? 1.2:1.4,
       style: TextStyle(
         color: color?? ColorManager.primary,
         fontSize: size?? 12,
         decoration: decoration,
-        wordSpacing: 2,
+
+        wordSpacing: 3,
         fontWeight: fontWeight?? FontWeight.w400,
         fontFamily: FontConstants.fontFamily
       ),
