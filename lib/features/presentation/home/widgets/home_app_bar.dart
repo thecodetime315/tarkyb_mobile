@@ -1,4 +1,6 @@
 import 'package:base_flutter/core/extensions/media_query.dart';
+import 'package:base_flutter/core/resource/navigation_service.dart';
+import 'package:base_flutter/features/presentation/notifications/notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -38,11 +40,14 @@ class HomeAppBar extends StatelessWidget {
               ),
             ),
             Spacer(),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: AppPadding.p8),
-              child: SvgPicture.asset(
-                AssetsManager.notification_icon,
-                color: ColorManager.white,
+            InkWell(
+              onTap: ()=> NavigationService.navigateTo(Notifications()),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: AppPadding.p8),
+                child: SvgPicture.asset(
+                  AssetsManager.notification_icon,
+                  color: ColorManager.white,
+                ),
               ),
             ),
           ],

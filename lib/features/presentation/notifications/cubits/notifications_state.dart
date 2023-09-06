@@ -7,15 +7,9 @@ abstract class NotificationsState extends Equatable {
 }
 
 class NotificationsInitial extends NotificationsState {}
+class NotificationsLoading extends NotificationsState {}
 class NotificationsLoaded extends NotificationsState {
-  final List<NotificationsBody> notifications;
+  final List<NotificationsModel> notifications;
 
   NotificationsLoaded(this.notifications);
-}
-
-class NotificationsLoading extends NotificationsState {
-  final List<NotificationsBody> oldNotifications;
-  final bool isFirstFetch;
-
-  NotificationsLoading(this.oldNotifications, {this.isFirstFetch=false});
 }

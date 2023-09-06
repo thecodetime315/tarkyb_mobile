@@ -1,40 +1,18 @@
-
-import 'package:base_flutter/core/helpers/snack_helper.dart';
-
+import 'package:base_flutter/core/resource/app_strings_manager.dart';
 
 import '../../../../core/api_service/DioImports.dart';
 import '../models/notifications_model.dart';
+import 'notifications_repo.dart';
 
-class NotificationsRepoImpl{
-  // Future<NotificationsModel?> notifications(int page) async{
-  //   String param = '?paginate=20&page=$page';
-  //   var data = await DioHelper().get(url: ApiNames.notifications + param);
-  //   if (data != null) {
-  //     return NotificationsModel.fromJson(data['data']);
-  //   } else {
-  //     return null;
-  //   }
-  // }
-  // Future<bool> deleteNotification(String id) async {
-  //   var data = await DioHelper().delete(url: ApiNames.deleteNotifications + id);
-  //   if(data["status"] == true){
-  //     SnackBarHelper.showBasicSnack(msg: data["message"]);
-  //     return true;
-  //   }
-  //   else{
-  //     SnackBarHelper.showBasicSnack(msg: data["message"]);
-  //     return false;
-  //   }
-  // }
-  // Future<bool> deleteAllNotifications() async {
-  //   var data = await DioHelper().delete(url: ApiNames.deleteAllNotifications);
-  //   if(data["status"] == true){
-  //     SnackBarHelper.showBasicSnack(msg: data["message"]);
-  //     return true;
-  //   }
-  //   else{
-  //     SnackBarHelper.showBasicSnack(msg: data["message"]);
-  //     return false;
-  //   }
-  // }
+class NotificationsRepoImpl extends NotificationsBaseRepo {
+  Future<List<NotificationsModel>> notifications() async {
+    var data =
+        await DioHelper().get(url: AppStringsManager.getAllNotifications);
+    if (data != null) {
+      return List<NotificationsModel>.from(
+          data["data"].map((e) => NotificationsModel.fromJson(e)));
+    } else {
+      return [];
+    }
+  }
 }

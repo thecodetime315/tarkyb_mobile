@@ -30,6 +30,7 @@ class AppStringsManager {
   static const String cancelOrder = "cancel_order";
   static const String userReview = "user_review";
   static const String sendChatMessage = "send-chat-message/";
+  static const String getAllNotifications = "get_all_notifications";
   static const String chats = "chats/";
   static const String notFound = "Not Found Page";
   static const String hello = "hello";

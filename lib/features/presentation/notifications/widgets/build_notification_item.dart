@@ -8,7 +8,7 @@ import '../../../../core/base_widgets/my_text.dart';
 import '../models/notifications_model.dart';
 
 class BuildNotificationItem extends StatelessWidget {
-  final NotificationsBody model;
+  final NotificationsModel model;
   const BuildNotificationItem({Key? key, required this.model})
       : super(key: key);
 
@@ -46,7 +46,7 @@ class BuildNotificationItem extends StatelessWidget {
               SizedBox(
                 width: context.width*0.15,
                 child: MyText(
-                  title: "${model.body}",
+                  title: "${model.data?.body}",
                   color: ColorManager.black,
                   size: 15,
                 ),
