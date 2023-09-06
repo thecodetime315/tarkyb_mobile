@@ -58,10 +58,10 @@ class CartLogic {
   final GenericCubit<num> totalPrice = GenericCubit(0);
   final GenericCubit<int> selectPaymentCubit = GenericCubit(0);
   final GenericCubit<bool> loadingButton = GenericCubit(false);
+  final GenericCubit<int> selectedCityCubit = GenericCubit(0);
+  final GenericCubit<int> selectedAreaCubit = GenericCubit(0);
 
-  // Variables
-  int? cityId;
-  int? areaId;
+
   WorkingTimeModel? periodId;
 
   // Cart Services
@@ -140,8 +140,8 @@ class CartLogic {
     loadingButton.onUpdateData(true);
     // todo : handle Usecase
     CreateOrderModel model = CreateOrderModel(
-      cityId: cityId,
-      areaId: areaId,
+      cityId: selectedCityCubit.state.data,
+      areaId: selectedAreaCubit.state.data,
       technicianId: technicianId,
       periodId: periodId?.id ?? 0,
       datetime: dateController.text,

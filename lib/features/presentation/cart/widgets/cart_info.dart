@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:base_flutter/core/extensions/media_query.dart';
 import 'package:base_flutter/core/generic_cubit/generic_cubit.dart';
 import 'package:base_flutter/core/helpers/validator.dart';
@@ -48,23 +50,31 @@ class CartInfo extends StatelessWidget {
                 )
             ],
             onChangeAction: (v) {
-              cartLogic.cityId = v;
+              cartLogic.selectedCityCubit.onUpdateData(v.id);
+              log("ssss : ${cartLogic.selectedCityCubit.state.data}");
+
             },
           ),
-          DropdownButtonCustom<AreasModel>(
-            hintText: "المنطقة",
-            dropDownValue: null,
-            items: [
-              for (var item in cartLogic.areasCubit.state.data)
-                DropdownMenuItem<AreasModel>(
-                  value: item,
-                  child: Text(
-                    item.name ?? '',
-                  ),
-                )
-            ],
-            onChangeAction: (v) {
-              cartLogic.areaId = v;
+          BlocBuilder<GenericCubit<int>, GenericState<int>>(
+            bloc: cartLogic.selectedAreaCubit,
+            builder: (context, state) {
+              return DropdownButtonCustom<AreasModel>(
+                hintText: "المنطقة",
+                dropDownValue: null,
+                items: [
+                  for (var item in cartLogic.areasCubit.state.data)
+                    DropdownMenuItem<AreasModel>(
+                      value: item,
+                      child: Text(
+                        item.name ?? '',
+                      ),
+                    )
+                ],
+                onChangeAction: (v) {
+                  cartLogic.selectedAreaCubit.onUpdateData(v.id);
+                  log("ssss : ${cartLogic.selectedAreaCubit.state.data}");
+                },
+              );
             },
           ),
           Row(
@@ -84,7 +94,9 @@ class CartInfo extends StatelessWidget {
                 ),
               ),
               Expanded(
-                child: BlocBuilder<GenericCubit<List<WorkingTimeModel>>, GenericState<List<WorkingTimeModel>>>(
+                child: BlocBuilder<
+                    GenericCubit<List<WorkingTimeModel>>,
+                    GenericState<List<WorkingTimeModel>>>(
                   bloc: cartLogic.workingTimeCubit,
                   builder: (context, state) {
                     return DropdownButtonCustom<WorkingTimeModel>(

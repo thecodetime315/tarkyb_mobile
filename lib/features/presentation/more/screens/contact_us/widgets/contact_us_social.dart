@@ -3,7 +3,12 @@ import 'package:base_flutter/core/utils/utils_imports.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../../../../models/settings_model.dart';
+
 class ContactUsSocial extends StatelessWidget {
+  final List<SettingsModel> model;
+
+  const ContactUsSocial({Key? key, required this.model}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -11,7 +16,7 @@ class ContactUsSocial extends StatelessWidget {
       children: [
         InkWell(
           onTap: () {
-            Utils.launchURL(url: "https://twitter.com/abogheda72");
+            Utils.launchURL(url: model[7].value ?? '');
           },
           child: SvgPicture.asset(AssetsManager.twitter),
         ),
@@ -20,18 +25,18 @@ class ContactUsSocial extends StatelessWidget {
         ),
         InkWell(
           onTap: () {
-            Utils.launchWhatsApp("01002348032");
+            Utils.launchURL(url: model[5].value ?? '');
           },
-          child: SvgPicture.asset(AssetsManager.whatsapp),
+          child: SvgPicture.asset(AssetsManager.facebook),
         ),
         SizedBox(
           width: 15,
         ),
         InkWell(
           onTap: () {
-            Utils.sendMail("seifabogheda89@gmail.com");
+            Utils.launchURL(url: model[6].value ?? '');
           },
-          child: SvgPicture.asset(AssetsManager.gmail),
+          child: SvgPicture.asset(AssetsManager.instagram),
         ),
       ],
     );

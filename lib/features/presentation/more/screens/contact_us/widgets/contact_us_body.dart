@@ -6,10 +6,14 @@ import 'package:base_flutter/features/presentation/more/screens/contact_us/cubit
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../models/settings_model.dart';
 import 'contact_us_form.dart';
 import 'contact_us_social.dart';
 
 class ContactUsBody extends StatelessWidget {
+  final List<SettingsModel> model;
+
+  const ContactUsBody({Key? key, required this.model}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ContactUsCubit, ContactUsState>(
@@ -28,7 +32,7 @@ class ContactUsBody extends StatelessWidget {
                 ),
               if(state.contactUsState == RequestState.loading)
                 Center(child: AppLoaderHelper.showSimpleLoading(),),
-              ContactUsSocial(),
+              ContactUsSocial(model: model,),
             ],
           ),
         );

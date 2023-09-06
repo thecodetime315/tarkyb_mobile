@@ -29,6 +29,7 @@ class AddToCartCubit extends Cubit<AddToCartState> {
       technicianId: technicianId,
       serviceId: servicesId,
       price: pricesOfServices,
+      vip: vip
     );
     var result = await techRepo.addToCart(addToCartModel);
     if (result) {

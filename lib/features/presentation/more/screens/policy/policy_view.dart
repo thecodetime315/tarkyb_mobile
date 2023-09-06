@@ -1,5 +1,7 @@
 
 
+import 'dart:developer';
+
 import 'package:base_flutter/features/presentation/more/screens/policy/widgets/policy_body.dart';
 import 'package:flutter/material.dart';
 
@@ -11,6 +13,7 @@ final String value;
   const PolicyView({Key? key, required this.value}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    log("test : $value" );
     return CustomAppBar(
       title: "الشروط والاحكام",
       needNotify: false,

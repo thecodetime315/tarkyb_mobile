@@ -4,15 +4,18 @@ import 'package:base_flutter/features/presentation/more/screens/contact_us/widge
 import 'package:flutter/material.dart';
 
 import '../../../../custom_widgets/custom_app_bar.dart';
+import '../../../../models/settings_model.dart';
 
 class ContactUsView extends StatelessWidget {
+final List<SettingsModel> model;
 
-  @override
+  const ContactUsView({Key? key, required this.model}) : super(key: key);
+@override
   Widget build(BuildContext context) {
     return CustomAppBar(
       title: "تواصل معنا",
       needNotify: false,
-      child: ContactUsBody(),
+      child: ContactUsBody(model: model,),
     );
   }
 }

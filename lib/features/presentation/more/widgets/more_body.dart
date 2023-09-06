@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:base_flutter/core/base_widgets/my_text.dart';
 import 'package:base_flutter/core/generic_cubit/generic_cubit.dart';
 import 'package:base_flutter/core/resource/assets_manager.dart';
@@ -18,7 +20,6 @@ import '../screens/contact_us/contact_us_view.dart';
 import '../screens/policy/policy_view.dart';
 import 'package:base_flutter/core/injection/get_injection.dart' as di;
 
-
 class MoreBody extends StatefulWidget {
   const MoreBody();
 
@@ -35,14 +36,17 @@ class _MoreBodyState extends State<MoreBody> {
       settingsCubit.onUpdateData(result);
     }
   }
+
   @override
   void initState() {
     getSettings();
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<GenericCubit<List<SettingsModel>>,GenericState<List<SettingsModel>>>(
+    return BlocBuilder<GenericCubit<List<SettingsModel>>,
+        GenericState<List<SettingsModel>>>(
       bloc: settingsCubit,
       builder: (BuildContext context, state) {
         return ListView(
@@ -67,22 +71,6 @@ class _MoreBodyState extends State<MoreBody> {
                 ));
               },
             ),
-            // Padding(
-            //   padding: EdgeInsets.symmetric(vertical: 10),
-            //   child: MyText(
-            //     title: "إعدادات عامة",
-            //     size: 12,
-            //     color: ColorManager.grey2,
-            //     fontWeight: FontWeight.w600,
-            //   ),
-            // ),
-            // MoreItem(
-            //   titleItem: 'إعدادات اللفة',
-            //   imageItem: AssetsManager.translate,
-            //   onTap: () {
-            //     NavigationService.navigateTo(ChangeLangView());
-            //   },
-            // ),
             Padding(
               padding: EdgeInsets.symmetric(vertical: 10),
               child: MyText(
@@ -104,9 +92,9 @@ class _MoreBodyState extends State<MoreBody> {
               imageItem: AssetsManager.contactus,
               onTap: () {
                 NavigationService.navigateTo(BlocProvider(
-  create: (context) => ContactUsCubit(),
-  child: ContactUsView(),
-));
+                  create: (context) => ContactUsCubit(),
+                  child: ContactUsView(model: state.data,),
+                ));
               },
             ),
             MoreItem(

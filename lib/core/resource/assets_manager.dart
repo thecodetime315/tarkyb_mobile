@@ -32,6 +32,8 @@ class AssetsManager {
   static const String gmail = "$imagePath/gmail.svg";
   static const String whatsapp = "$imagePath/whatsapp.svg";
   static const String twitter = "$imagePath/twitter.svg";
+  static const String facebook = "$imagePath/facebook.svg";
+  static const String instagram = "$imagePath/instagram.svg";
   static const String location = "$imagePath/location.svg";
   static const String locationPng = "$imagePath/location.png";
   static const String page1 = "$imagePath/page1.png";
