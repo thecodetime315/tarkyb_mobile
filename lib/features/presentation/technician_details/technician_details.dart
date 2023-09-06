@@ -6,6 +6,7 @@ import 'package:base_flutter/features/presentation/technician_details/widgets/te
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../core/helpers/snack_helper.dart';
 import '../../custom_widgets/custom_gradient_button.dart';
 
 class TechnicianDetails extends StatelessWidget {
@@ -39,12 +40,20 @@ class TechnicianDetails extends StatelessWidget {
                 margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                 borderRadius: BorderRadius.circular(4),
                 onTap: () {
-                  context.read<AddToCartCubit>().addToCart(
-                      context,
-                      context.read<TechDetailsCubit>().servicesId ?? [],
-                      context.read<TechDetailsCubit>().pricesOfServices ?? [],
-                      context.read<TechDetailsCubit>().technicianId ?? 0,
-                      isVip);
+                  if (context.read<TechDetailsCubit>().servicesId!.isNotEmpty) {
+                    context.read<AddToCartCubit>().addToCart(
+                        context,
+                        context.read<TechDetailsCubit>().servicesId ?? [],
+                        context.read<TechDetailsCubit>().pricesOfServices ?? [],
+                        context.read<TechDetailsCubit>().technicianId ?? 0,
+                        isVip);
+                  } else {
+                    context
+                        .read<AddToCartCubit>()
+                        .state
+                        .copyWith(addToCartState: RequestState.error);
+                    SnackBarHelper.showBasicSnack(msg: "اختر من الخدمات أولا");
+                  }
                 },
                 title: "اطلب الخدمة",
               );

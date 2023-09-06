@@ -15,6 +15,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../auth/resouces/auth_base_repo.dart';
 import '../../auth/screens/profile/profile_view.dart';
+import '../../main_navigation_bar/cubits/main_navigation_cubit.dart';
 import '../screens/about/about_view.dart';
 import '../screens/contact_us/contact_us_view.dart';
 import '../screens/policy/policy_view.dart';
@@ -30,9 +31,8 @@ class MoreBody extends StatefulWidget {
 class _MoreBodyState extends State<MoreBody> {
   final GenericCubit<List<SettingsModel>> settingsCubit = GenericCubit([]);
   getSettings() async {
-    var result = await di
-        .getIt<MoreBaseRepo>().settings();
-    if(result != []){
+    var result = await di.getIt<MoreBaseRepo>().settings();
+    if (result != []) {
       settingsCubit.onUpdateData(result);
     }
   }
@@ -84,7 +84,8 @@ class _MoreBodyState extends State<MoreBody> {
               titleItem: 'من نحن',
               imageItem: AssetsManager.about,
               onTap: () {
-                NavigationService.navigateTo(AboutView(state.data[2].value ?? ''));
+                NavigationService.navigateTo(
+                    AboutView(state.data[2].value ?? ''));
               },
             ),
             MoreItem(
@@ -93,7 +94,9 @@ class _MoreBodyState extends State<MoreBody> {
               onTap: () {
                 NavigationService.navigateTo(BlocProvider(
                   create: (context) => ContactUsCubit(),
-                  child: ContactUsView(model: state.data,),
+                  child: ContactUsView(
+                    model: state.data,
+                  ),
                 ));
               },
             ),
@@ -101,7 +104,9 @@ class _MoreBodyState extends State<MoreBody> {
               titleItem: 'الشروط والاحكام',
               imageItem: AssetsManager.terms,
               onTap: () {
-                NavigationService.navigateTo(PolicyView(value: state.data[3].value ?? '',));
+                NavigationService.navigateTo(PolicyView(
+                  value: state.data[3].value ?? '',
+                ));
               },
             ),
             SizedBox(
@@ -112,6 +117,7 @@ class _MoreBodyState extends State<MoreBody> {
               imageItem: AssetsManager.logout,
               onTap: () async {
                 await di.getIt<AuthBaseRepo>().logout();
+                context.read<BottomNavCubit>().updateIndex(0);
               },
               isLogout: true,
             ),

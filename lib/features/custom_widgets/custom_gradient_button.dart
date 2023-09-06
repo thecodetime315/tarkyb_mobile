@@ -64,7 +64,6 @@ class CustomGradientButton extends StatelessWidget {
             backgroundColor:
             MaterialStateProperty.all(Colors.transparent,),
             shadowColor: MaterialStateProperty.all(Colors.transparent,),
-
             shape: MaterialStateProperty.all<RoundedRectangleBorder>(
               RoundedRectangleBorder(
                 borderRadius: borderRadius ?? BorderRadius.circular(15.0),

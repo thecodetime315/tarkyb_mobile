@@ -52,7 +52,6 @@ class CartInfo extends StatelessWidget {
             onChangeAction: (v) {
               cartLogic.selectedCityCubit.onUpdateData(v.id);
               log("ssss : ${cartLogic.selectedCityCubit.state.data}");
-
             },
           ),
           BlocBuilder<GenericCubit<int>, GenericState<int>>(
@@ -77,7 +76,7 @@ class CartInfo extends StatelessWidget {
               );
             },
           ),
-          Row(
+          cartLogic.cartCubit.state.data?.vip == 0  ?   Row(
             children: [
               Expanded(
                 child: CustomTextField(
@@ -85,17 +84,15 @@ class CartInfo extends StatelessWidget {
                   fieldTypes: FieldTypes.clickable,
                   hint: "التاريخ",
                   textColor: ColorManager.primary,
-                  onTap: () =>
-                      cartLogic.dateFun(context,
-                          cartLogic.cartCubit.state.data?.technician?.id ?? 0),
+                  onTap: () => cartLogic.dateFun(context,
+                      cartLogic.cartCubit.state.data?.technician?.id ?? 0),
                   width: context.width * 0.5,
                   controller: cartLogic.dateController,
                   type: TextInputType.text,
                 ),
               ),
               Expanded(
-                child: BlocBuilder<
-                    GenericCubit<List<WorkingTimeModel>>,
+                child: BlocBuilder<GenericCubit<List<WorkingTimeModel>>,
                     GenericState<List<WorkingTimeModel>>>(
                   bloc: cartLogic.workingTimeCubit,
                   builder: (context, state) {
@@ -119,7 +116,7 @@ class CartInfo extends StatelessWidget {
                 ),
               )
             ],
-          ),
+          ) : SizedBox(),
           BlocListener<LocationCubit, LocationState>(
             bloc: cartLogic.locationCubit,
             listener: (context, state) {
@@ -142,14 +139,14 @@ class CartInfo extends StatelessWidget {
                 return state is LocationLoading
                     ? AppLoaderHelper.showLoadingDialog()
                     : CustomTextField(
-                  onTap: () => cartLogic.onLocationClick(context),
-                  validator: (value) => value?.noValidate(),
-                  fieldTypes: FieldTypes.clickable,
-                  type: TextInputType.none,
-                  controller: cartLogic.locationController,
-                  hint: "ادخل العنوان",
-                  textColor: ColorManager.primary,
-                );
+                        onTap: () => cartLogic.onLocationClick(context),
+                        validator: (value) => value?.noValidate(),
+                        fieldTypes: FieldTypes.clickable,
+                        type: TextInputType.none,
+                        controller: cartLogic.locationController,
+                        hint: "ادخل العنوان",
+                        textColor: ColorManager.primary,
+                      );
               },
             ),
           ),

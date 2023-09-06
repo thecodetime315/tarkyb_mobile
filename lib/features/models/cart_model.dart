@@ -1,15 +1,17 @@
 
 class CartModel {
   int? id;
+  int? vip;
   num? total;
   List<Services>? services;
   User? user;
   Technician? technician;
 
-  CartModel({this.services, this.user, this.technician,this.total,this.id});
+  CartModel({this.services, this.user, this.technician,this.total,this.id,this.vip});
 
   CartModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
+    vip = json['vip'];
     total = json['total'];
     if (json['services'] != null) {
       services = <Services>[];

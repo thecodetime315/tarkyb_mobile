@@ -1,4 +1,5 @@
 import 'package:base_flutter/core/generic_cubit/generic_cubit.dart';
+import 'package:base_flutter/core/helpers/snack_helper.dart';
 import 'package:base_flutter/features/models/areas_model.dart';
 import 'package:base_flutter/features/models/cart_model.dart';
 import 'package:base_flutter/features/models/cities_model.dart';
@@ -136,50 +137,101 @@ class CartLogic {
 
   // Create Order
 
-  createOrder(int technicianId, BuildContext context) async {
+  createOrder(int technicianId, BuildContext context,int vip) async {
     loadingButton.onUpdateData(true);
-    // todo : handle Usecase
-    CreateOrderModel model = CreateOrderModel(
-      cityId: selectedCityCubit.state.data,
-      areaId: selectedAreaCubit.state.data,
-      technicianId: technicianId,
-      periodId: periodId?.id ?? 0,
-      datetime: dateController.text,
-      address: locationCubit.state.model!.address,
-      lat: locationCubit.state.model!.lat,
-      long: locationCubit.state.model!.lat,
-      paymentMethod: selectPaymentCubit.state.data == 1 ? "cash" : "online",
-      vip: 0,
-    );
-    var data = await cartRepo.createOrder(model);
-    if (data) {
-      UIHelper.showDialog(
-          context: context,
-          child: Column(
-            children: [
-              LottieBuilder.asset(
-                AssetsManager.successJson,
-                height: 140,
-                fit: BoxFit.fill,
-              ),
-              MyText(
-                title: "تم اضافة طلبك بنجاح",
-                color: ColorManager.grey2,
-                size: 12,
-              ),
-              CustomGradientButton(
-                margin: EdgeInsets.symmetric(horizontal: 24, vertical: 20),
-                title: "اذهب للرئيسية",
-                onTap: () {
-                  context.read<BottomNavCubit>().updateIndex(0);
-                  NavigationService.removeUntil(MainNavigationBar());
-                  loadingButton.onUpdateData(false);
+    if(cartCubit.state.data != null){
+    if(vip == 0){
+      CreateOrderModel model = CreateOrderModel(
+        cityId: selectedCityCubit.state.data,
+        areaId: selectedAreaCubit.state.data,
+        technicianId: technicianId,
+        periodId: periodId?.id ?? 0,
+        datetime: dateController.text,
+        address: locationCubit.state.model!.address,
+        lat: locationCubit.state.model!.lat,
+        long: locationCubit.state.model!.lat,
+        paymentMethod: selectPaymentCubit.state.data == 1 ? "cash" : "online",
+        vip: vip,
+      );
+      var data = await cartRepo.createOrder(model);
+      if (data) {
+        UIHelper.showDialog(
+            context: context,
+            child: Column(
+              children: [
+                LottieBuilder.asset(
+                  AssetsManager.successJson,
+                  height: 140,
+                  fit: BoxFit.fill,
+                ),
+                MyText(
+                  title: "تم اضافة طلبك بنجاح",
+                  color: ColorManager.grey2,
+                  size: 12,
+                ),
+                CustomGradientButton(
+                  margin: EdgeInsets.symmetric(horizontal: 24, vertical: 20),
+                  title: "اذهب للرئيسية",
+                  onTap: () {
+                    context.read<BottomNavCubit>().updateIndex(0);
+                    NavigationService.removeUntil(MainNavigationBar());
+                    loadingButton.onUpdateData(false);
 
-                },
-              )
-            ],
-          ),
-          height: 250);
+                  },
+                )
+              ],
+            ),
+            height: 250);
+
+      }
+    }else{
+      CreateOrderModel model = CreateOrderModel(
+        cityId: selectedCityCubit.state.data,
+        areaId: selectedAreaCubit.state.data,
+        technicianId: technicianId,
+        // periodId: periodId?.id ?? 0,
+        // datetime: dateController.text,
+        address: locationCubit.state.model!.address,
+        lat: locationCubit.state.model!.lat,
+        long: locationCubit.state.model!.lat,
+        paymentMethod: selectPaymentCubit.state.data == 1 ? "cash" : "online",
+        vip: vip,
+      );
+      var data = await cartRepo.createOrder(model);
+      if (data) {
+        UIHelper.showDialog(
+            context: context,
+            child: Column(
+              children: [
+                LottieBuilder.asset(
+                  AssetsManager.successJson,
+                  height: 140,
+                  fit: BoxFit.fill,
+                ),
+                MyText(
+                  title: "تم اضافة طلبك بنجاح",
+                  color: ColorManager.grey2,
+                  size: 12,
+                ),
+                CustomGradientButton(
+                  margin: EdgeInsets.symmetric(horizontal: 24, vertical: 20),
+                  title: "اذهب للرئيسية",
+                  onTap: () {
+                    context.read<BottomNavCubit>().updateIndex(0);
+                    NavigationService.removeUntil(MainNavigationBar());
+                    loadingButton.onUpdateData(false);
+
+                  },
+                )
+              ],
+            ),
+            height: 250);
+
+      }
+    }
+    }else{
+      SnackBarHelper.showBasicSnack(msg: "السلة فارغة");
+      loadingButton.onUpdateData(false);
 
     }
   }

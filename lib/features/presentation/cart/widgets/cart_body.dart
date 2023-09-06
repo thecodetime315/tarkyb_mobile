@@ -125,7 +125,7 @@ class _CartBodyState extends State<CartBody> {
               margin: EdgeInsets.symmetric(horizontal: 25, vertical: 15),
               onTap: () {
                 cartLogic.createOrder(
-                    cartLogic.cartCubit.state.data?.technician?.id ?? 0, context);
+                    cartLogic.cartCubit.state.data?.technician?.id ?? 0, context,cartLogic.cartCubit.state.data?.vip ?? 0);
               },
             ): Center(child: AppLoaderHelper.showSimpleLoading(),);
 

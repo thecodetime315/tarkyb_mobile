@@ -60,6 +60,9 @@ class AddToCartCubit extends Cubit<AddToCartState> {
             ],
           ),
           height: 220);
+    }else{
+      emit(state.copyWith(addToCartState: RequestState.error));
+
     }
   }
 }
