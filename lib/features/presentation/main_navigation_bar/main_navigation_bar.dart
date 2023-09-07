@@ -23,7 +23,6 @@ class _MainNavigationBarState extends State<MainNavigationBar> {
   }
 
   final _pageNavigation = [
-    // todo put Screens here
     Home(),
     OrdersView(),
     Cart(),

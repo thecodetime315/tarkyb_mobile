@@ -47,4 +47,5 @@ class AssetsManager {
   static const String userWithoutCircle = "$imagePath/user_without_circle.png";
   static const String experianceImg = "$imagePath/experiance_img.png";
   static const String successJson = "$animPath/success.json";
+  static const String visitorJson = "$animPath/visitor.json";
 }

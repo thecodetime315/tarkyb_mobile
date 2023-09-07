@@ -44,7 +44,7 @@ class RegisterCubit extends Cubit<RegisterState> {
         emit(state.copyWith(registerState: RequestState.loaded));
       } else {
         emit(state.copyWith(registerState: RequestState.init));
-        SnackBarHelper.showBasicSnack(msg: "حدث خطأ ما");
+        // SnackBarHelper.showBasicSnack(msg: "حدث خطأ ما");
       }
     }
   }

@@ -15,7 +15,7 @@ class Notifications extends StatelessWidget {
   Widget build(BuildContext context) {
     GlobalKey<ScaffoldState> scaffoldState = GlobalKey<ScaffoldState>();
 
-    return BlocProvider(
+    return  BlocProvider(
       create: (context) => NotificationsCubit()..loadedNotifications(),
       child: CustomAppBar(
         scaffoldKey:scaffoldState ,

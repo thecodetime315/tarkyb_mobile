@@ -34,7 +34,6 @@ class AuthRepoImpl extends AuthBaseRepo {
       SnackBarHelper.showBasicSnack(msg: data["data"][0]);
       return true;
     } else {
-      SnackBarHelper.showBasicSnack(msg: data["message"]);
       return false;
     }
   }

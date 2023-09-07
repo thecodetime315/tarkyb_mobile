@@ -76,47 +76,52 @@ class CartInfo extends StatelessWidget {
               );
             },
           ),
-          cartLogic.cartCubit.state.data?.vip == 0  ?   Row(
-            children: [
-              Expanded(
-                child: CustomTextField(
-                  validator: (value) => value?.noValidate(),
-                  fieldTypes: FieldTypes.clickable,
-                  hint: "التاريخ",
-                  textColor: ColorManager.primary,
-                  onTap: () => cartLogic.dateFun(context,
-                      cartLogic.cartCubit.state.data?.technician?.id ?? 0),
-                  width: context.width * 0.5,
-                  controller: cartLogic.dateController,
-                  type: TextInputType.text,
-                ),
-              ),
-              Expanded(
-                child: BlocBuilder<GenericCubit<List<WorkingTimeModel>>,
-                    GenericState<List<WorkingTimeModel>>>(
-                  bloc: cartLogic.workingTimeCubit,
-                  builder: (context, state) {
-                    return DropdownButtonCustom<WorkingTimeModel>(
-                      hintText: "اختر الوقت",
-                      dropDownValue: null,
-                      items: [
-                        for (var item in cartLogic.workingTimeCubit.state.data)
-                          DropdownMenuItem<WorkingTimeModel>(
-                            value: item,
-                            child: Text(
-                              item.name ?? '',
-                            ),
-                          )
-                      ],
-                      onChangeAction: (v) {
-                        cartLogic.periodId = v;
-                      },
-                    );
-                  },
-                ),
-              )
-            ],
-          ) : SizedBox(),
+          cartLogic.cartCubit.state.data?.vip == 0
+              ? Row(
+                  children: [
+                    Expanded(
+                      child: CustomTextField(
+                        validator: (value) => value?.noValidate(),
+                        fieldTypes: FieldTypes.clickable,
+                        hint: "التاريخ",
+                        textColor: ColorManager.primary,
+                        onTap: () => cartLogic.dateFun(
+                            context,
+                            cartLogic.cartCubit.state.data?.technician?.id ??
+                                0),
+                        width: context.width * 0.5,
+                        controller: cartLogic.dateController,
+                        type: TextInputType.text,
+                      ),
+                    ),
+                    Expanded(
+                      child: BlocBuilder<GenericCubit<List<WorkingTimeModel>>,
+                          GenericState<List<WorkingTimeModel>>>(
+                        bloc: cartLogic.workingTimeCubit,
+                        builder: (context, state) {
+                          return DropdownButtonCustom<WorkingTimeModel>(
+                            hintText: "اختر الوقت",
+                            dropDownValue: null,
+                            items: [
+                              for (var item
+                                  in cartLogic.workingTimeCubit.state.data)
+                                DropdownMenuItem<WorkingTimeModel>(
+                                  value: item,
+                                  child: Text(
+                                    item.name ?? '',
+                                  ),
+                                )
+                            ],
+                            onChangeAction: (v) {
+                              cartLogic.periodId = v;
+                            },
+                          );
+                        },
+                      ),
+                    )
+                  ],
+                )
+              : SizedBox(),
           BlocListener<LocationCubit, LocationState>(
             bloc: cartLogic.locationCubit,
             listener: (context, state) {

@@ -299,6 +299,7 @@ class DioHelper {
 
   void tokenExpired()async {
     Preferences.clearAll();
-    // NavigationService.navigateAndReplacement(Login());
+    SnackBarHelper.showBasicSnack(msg: "حدث خطأ ما , يرجى اعادة التسجيل مجددا");
+    NavigationService.navigateAndReplacement(LoginView());
   }
 }

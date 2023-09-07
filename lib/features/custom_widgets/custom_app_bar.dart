@@ -2,10 +2,12 @@ import 'package:base_flutter/core/base_widgets/my_text.dart';
 import 'package:base_flutter/core/extensions/media_query.dart';
 import 'package:base_flutter/core/resource/navigation_service.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../core/resource/assets_manager.dart';
 import '../../core/resource/color_manager.dart';
+import '../presentation/auth/blocs/auth_cubit/auth_cubit.dart';
 import '../presentation/notifications/notifications.dart';
 
 class CustomAppBar extends StatelessWidget {
@@ -24,6 +26,8 @@ class CustomAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var cubit = context.read<AuthCubit>().state.authorized;
+
     return Scaffold(
       key: scaffoldKey,
       resizeToAvoidBottomInset: true,
@@ -62,7 +66,7 @@ class CustomAppBar extends StatelessWidget {
                   size: 15,
                   fontWeight: FontWeight.w400,
                 ),
-                needNotify == true
+                needNotify == true && cubit == true
                     ? InkWell(
                         onTap: () {
                           NavigationService.navigateTo(Notifications());
