@@ -90,7 +90,7 @@
   "contactOnWhats": "التواصل عبر الواتس اب",
   "activeAccount": "تفعيل الحساب",
   "codeSendToPhone":"سوف يتم إرسال كود التفعيل لرقم الجوال الخاص بك عبر الرسائل",
-  "passValidation": "من فضلك ادخل علي الاقل 6 حروف او ارقام",
+  "passValidation": "من فضلك ادخل علي الاقل 8 حروف او ارقام",
   "mailValidation": "من فضلك ادخل البريد صحيحا",
   "phoneValidation": "من فضلك ادخل الجوال صحيحا",
   "confirmValidation": "من فضلك ادخل كلمة المرورمتطابق",

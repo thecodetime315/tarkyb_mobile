@@ -31,131 +31,134 @@ class HomeFilter extends StatelessWidget {
       builder: (context, state) {
         return Form(
           key: context.read<HomeCubit>().formKey,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              MyText(
-                title: 'حدد موقعك الجغرافي واطلب خدمتك الان ',
-                fontWeight: FontWeight.w400,
-                color: ColorManager.primary,
-                alien: TextAlign.start,
-                size: 13,
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              // if(state.servicesState == RequestState.loaded || state.servicesState == RequestState.init)
-              DropdownButtonCustom<ServicesModel>(
-                hintText: "الخدمة",
-                items: [
-                  for (var item in state.servicesList)
-                    DropdownMenuItem<ServicesModel>(
-                      value: item,
-                      child: Text(
-                        item.name ?? '',
-                      ),
-                    )
-                ],
-                dropDownValue: dropped,
-                onChangeAction: (v) {
-                  filterCubit.serviceId = v.id;
-                  log("change : $v");
-                  log("change : ${filterCubit.serviceId}");
-                },
-              ),
-              DropdownButtonCustom<CitiesModel>(
-                hintText: "المدينة",
-                items: [
-                  for (var item in state.citiesList)
-                    DropdownMenuItem<CitiesModel>(
-                      value: item,
-                      child: Text(
-                        item.nameAr ?? '',
-                      ),
-                    )
-                ],
-                dropDownValue: null,
-                onChangeAction: (v) {
-                  filterCubit.cityId = v.id;
-                  log("change : $v");
-                  log("change : ${filterCubit.cityId}");
-                },
-              ),
-              DropdownButtonCustom<AreasModel>(
-                hintText: "المنطقة",
-                items: [
-                  for (var item in state.areasList)
-                    DropdownMenuItem<AreasModel>(
-                      value: item,
-                      child: Text(
-                        item.name ?? '',
-                      ),
-                    )
-                ],
-                dropDownValue: null,
-                onChangeAction: (v) {
-                  filterCubit.areaId = v.id;
-                  log("change : $v");
-                  log("change : ${filterCubit.areaId}");
-                },
-              ),
-              CustomTextField(
-                validator: (value) => value?.noValidate(),
-                fieldTypes: FieldTypes.clickable,
-                hint: "التاريخ",
-                textColor: ColorManager.primary,
-                onTap: () => context.read<HomeCubit>().dateFun(context),
-                controller: context.read<HomeCubit>().dateController,
-                type: TextInputType.text,
-                prefixIcon: Icon(
-                  Icons.calendar_today,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                MyText(
+                  title: 'حدد موقعك الجغرافي واطلب خدمتك الان ',
+                  fontWeight: FontWeight.w400,
                   color: ColorManager.primary,
-                  size: 20,
+                  alien: TextAlign.start,
+                  size: 13,
                 ),
-              ),
-
-              Row(
-                children: [
-                  BlocBuilder<GenericCubit<bool>, GenericState<bool>>(
-                    bloc: checkCubit,
-                    builder: (context, state) {
-                      return Checkbox(
-                          value: state.data,
-                          activeColor: ColorManager.primary,
-                          onChanged: (value) {
-                            checkCubit.onUpdateData(value!);
-                            bool checked = value;
-                            filterCubit.vip = checked;
-                            log("checked is ${filterCubit.vip}");
-                          });
-                    },
+                SizedBox(
+                  height: 5,
+                ),
+                // if(state.servicesState == RequestState.loaded || state.servicesState == RequestState.init)
+                DropdownButtonCustom<ServicesModel>(
+                  hintText: "الخدمة",
+                  items: [
+                    for (var item in state.servicesList)
+                      DropdownMenuItem<ServicesModel>(
+                        value: item,
+                        child: Text(
+                          item.name ?? '',
+                        ),
+                      )
+                  ],
+                  dropDownValue: dropped,
+                  onChangeAction: (v) {
+                    filterCubit.serviceId = v.id;
+                    log("change : $v");
+                    log("change : ${filterCubit.serviceId}");
+                  },
+                ),
+                DropdownButtonCustom<CitiesModel>(
+                  hintText: "المدينة",
+                  items: [
+                    for (var item in state.citiesList)
+                      DropdownMenuItem<CitiesModel>(
+                        value: item,
+                        child: Text(
+                          item.nameAr ?? '',
+                        ),
+                      )
+                  ],
+                  dropDownValue: null,
+                  onChangeAction: (v) {
+                    filterCubit.cityId = v.id;
+                    log("change : $v");
+                    log("change : ${filterCubit.cityId}");
+                  },
+                ),
+                DropdownButtonCustom<AreasModel>(
+                  hintText: "المنطقة",
+                  items: [
+                    for (var item in state.areasList)
+                      DropdownMenuItem<AreasModel>(
+                        value: item,
+                        child: Text(
+                          item.name ?? '',
+                        ),
+                      )
+                  ],
+                  dropDownValue: null,
+                  onChangeAction: (v) {
+                    filterCubit.areaId = v.id;
+                    log("change : $v");
+                    log("change : ${filterCubit.areaId}");
+                  },
+                ),
+                CustomTextField(
+                  validator: (value) => value?.noValidate(),
+                  fieldTypes: FieldTypes.clickable,
+                  hint: "التاريخ",
+                  textColor: ColorManager.primary,
+                  onTap: () => context.read<HomeCubit>().dateFun(context),
+                  controller: context.read<HomeCubit>().dateController,
+                  type: TextInputType.text,
+                  prefixIcon: Icon(
+                    Icons.calendar_today,
+                    color: ColorManager.primary,
+                    size: 20,
                   ),
-                  MyText(
-                    title: "حجز خدمة VIP خارج اوقات العمل",
-                    color: ColorManager.grey2,
-                  )
-                ],
-              ),
-              BlocBuilder<FilterCubit, FilterState>(
-                builder: (context, state) {
-                  if(state.filterState == RequestState.loading)
-                  return  Center(child: AppLoaderHelper.showSimpleLoading(),);
-                  if(state.filterState == RequestState.loaded || state.filterState == RequestState.init)
-                    return Center(
-                      child: CustomGradientButton(
-                        title: "بحث",
-                        onTap: () {
-                          filterCubit.filter(
-                              date: context.read<HomeCubit>().dateController.text);
-                          context.read<HomeCubit>().formKey.currentState!.reset();
-                        },
-                        width: context.width * 0.35,
-                      ),
-                    );
-                  return SizedBox();
-                },
-              )
-            ],
+                ),
+
+                Row(
+                  children: [
+                    BlocBuilder<GenericCubit<bool>, GenericState<bool>>(
+                      bloc: checkCubit,
+                      builder: (context, state) {
+                        return Checkbox(
+                            value: state.data,
+                            activeColor: ColorManager.primary,
+                            onChanged: (value) {
+                              checkCubit.onUpdateData(value!);
+                              bool checked = value;
+                              filterCubit.vip = checked;
+                              log("checked is ${filterCubit.vip}");
+                            });
+                      },
+                    ),
+                    MyText(
+                      title: "حجز خدمة VIP خارج اوقات العمل",
+                      color: ColorManager.grey2,
+                    )
+                  ],
+                ),
+                BlocBuilder<FilterCubit, FilterState>(
+                  builder: (context, state) {
+                    if(state.filterState == RequestState.loading)
+                    return  Center(child: AppLoaderHelper.showSimpleLoading(),);
+                    if(state.filterState == RequestState.loaded || state.filterState == RequestState.init)
+                      return Center(
+                        child: CustomGradientButton(
+                          title: "بحث",
+                          onTap: () {
+                            filterCubit.filter(
+                                date: context.read<HomeCubit>().dateController.text);
+                            context.read<HomeCubit>().formKey.currentState!.reset();
+                          },
+                          width: context.width * 0.35,
+                        ),
+                      );
+                    return SizedBox();
+                  },
+                )
+              ],
+            ),
           ),
         );
       },

@@ -25,21 +25,22 @@ class ProfileForm extends StatelessWidget {
           controller: cubit.name,
           textColor: ColorManager.primary,
         ),
-        CustomTextField(
-          validator: (value) => value?.validatePhone(context),
-          fieldTypes: FieldTypes.normal,
-          type: TextInputType.phone,
-          hint: tr(context,'phone'),
-          controller: cubit.phone,
-          textColor: ColorManager.primary,
-        ),
-        // CustomTextField (
-        //   validator: (value) => value?.validateEmpty(context),
+        // CustomTextField(
+        //   validator: (value) => value?.validatePhone(context),
         //   fieldTypes: FieldTypes.normal,
-        //   type: TextInputType.text,
-        //   hint: tr(context, "mail"),
+        //   type: TextInputType.phone,
+        //   hint: tr(context,'phone'),
+        //   controller: cubit.phone,
         //   textColor: ColorManager.primary,
         // ),
+        CustomTextField (
+          validator: (value) => value?.validateEmail(context),
+          fieldTypes: FieldTypes.normal,
+          type: TextInputType.emailAddress,
+          controller: cubit.email,
+          hint: tr(context, "mail"),
+          textColor: ColorManager.primary,
+        ),
       ],
     ));
   }

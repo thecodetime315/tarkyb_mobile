@@ -90,27 +90,27 @@ class TechnicalPersonCard extends StatelessWidget {
                     ),
                   ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 5.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Image.asset(
-                        AssetsManager.locationPng,
-                        height: 17,
-                      ),
-                      SizedBox(
-                        width: 5,
-                      ),
-                      MyText(
-                        title: model?.city ?? '',
-                        color: ColorManager.grey2,
-                        size: 10,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ],
-                  ),
-                ),
+                // Padding(
+                //   padding: const EdgeInsets.symmetric(vertical: 5.0),
+                //   child: Row(
+                //     mainAxisAlignment: MainAxisAlignment.start,
+                //     children: [
+                //       Image.asset(
+                //         AssetsManager.locationPng,
+                //         height: 17,
+                //       ),
+                //       SizedBox(
+                //         width: 5,
+                //       ),
+                //       MyText(
+                //         title: model?.city ?? '',
+                //         color: ColorManager.grey2,
+                //         size: 10,
+                //         fontWeight: FontWeight.w400,
+                //       ),
+                //     ],
+                //   ),
+                // ),
               ],
             ),
           ],

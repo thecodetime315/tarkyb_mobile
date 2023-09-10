@@ -28,7 +28,7 @@ class HomeAppBar extends StatelessWidget {
       )
       ),
       child: Padding(
-        padding: const EdgeInsets.only(top: 18.0),
+        padding: const EdgeInsets.only(top: 5.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

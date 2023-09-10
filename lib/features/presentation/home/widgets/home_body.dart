@@ -22,17 +22,11 @@ class HomeBody extends StatelessWidget {
               child: AppLoaderHelper.showSimpleLoading(),
             );
           if (state.mostRatedState == RequestState.loaded)
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            return ListView(
               children: [
                 HomeAppBar(),
                 HomeSlider(),
-                Expanded(
-                  child: ListView(
-                    padding: EdgeInsets.symmetric(horizontal: 5, vertical: 15),
-                    children: [HomeFilter(), HomeServices(), HomeRecommend()],
-                  ),
-                )
+                HomeFilter(), HomeServices(), HomeRecommend()
               ],
             );
           return SizedBox();

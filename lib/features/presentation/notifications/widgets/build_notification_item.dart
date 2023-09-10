@@ -20,6 +20,7 @@ class BuildNotificationItem extends StatelessWidget {
       decoration: BoxDecoration(
         color: ColorManager.white,
         borderRadius: BorderRadius.circular(5),
+        border: Border.all(color: ColorManager.grey2.withOpacity(0.2)),
         boxShadow: [
           BoxShadow(
             color: Colors.grey.withOpacity(0.2),
@@ -34,31 +35,23 @@ class BuildNotificationItem extends StatelessWidget {
           Row(
             children: [
               CircleAvatar(
-                radius: 22,
+                radius: 20,
                 child: Image.asset(
-                  AssetsManager.splashLogo,
-                  width: 35,
+                  AssetsManager.logo,
+                  width: 50,
                 ),
               ),
               SizedBox(
                 width: 8,
               ),
-              SizedBox(
-                width: context.width*0.15,
+              Container(
+                constraints: BoxConstraints(
+                  maxWidth: context.width *0.7
+                ),
                 child: MyText(
                   title: "${model.data?.body}",
                   color: ColorManager.black,
-                  size: 15,
-                ),
-              ),
-              Spacer(),
-              IconButton(
-                onPressed: () {
-                  // context.read<NotificationsCubit>().deleteOneNotification(model.id ?? '');
-                },
-                icon: Icon(
-                  Icons.delete_outline,
-                  color: ColorManager.error,
+                  size: 13,
                 ),
               ),
             ],
@@ -74,7 +67,7 @@ class BuildNotificationItem extends StatelessWidget {
                 ),
                 MyText(
                   title: "${model.createdAt}",
-                  size: 14,
+                  size: 12,
                   fontWeight: FontWeight.normal,
                   color: ColorManager.grey2,
                 ),

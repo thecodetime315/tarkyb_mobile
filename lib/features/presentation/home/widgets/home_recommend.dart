@@ -11,58 +11,61 @@ class HomeRecommend extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var cubit = context.read<HomeCubit>();
-    return Column(
-      children: [
-        SizedBox(
-          height: 12,
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            MyText(
-              title: "ترشيحات لك",
-              color: ColorManager.primary,
-              size: 16,
-              fontWeight: FontWeight.w400,
-            ),
-            InkWell(
-                onTap: () {
-                  NavigationService.navigateTo(AllRecommendTechnicians(
-                    technicianList: cubit.state.technicianList,
-                  ));
-                },
-                child: MyText(
-                  title: "عرض الكل",
-                  color: ColorManager.grey2,
-                  size: 13,
-                  fontWeight: FontWeight.w400,
-                  decoration: TextDecoration.underline,
-                )),
-          ],
-        ),
-        SizedBox(
-          height: 12,
-        ),
-        // if(cubit.state.mostRatedState == RequestState.loaded)
-        cubit.state.technicianList.length > 0
-            ? Column(
-                children: List.generate(
-                    3,
-                    (index) => TechnicalPersonCard(
-                          model: cubit.state.technicianList[index],
-                        )),
-              )
-            : Center(
-                child: MyText(
-                  title: "لا يوجد بيانات",
-                ),
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Column(
+        children: [
+          SizedBox(
+            height: 12,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              MyText(
+                title: "ترشيحات لك",
+                color: ColorManager.primary,
+                size: 16,
+                fontWeight: FontWeight.w400,
               ),
+              InkWell(
+                  onTap: () {
+                    NavigationService.navigateTo(AllRecommendTechnicians(
+                      technicianList: cubit.state.technicianList,
+                    ));
+                  },
+                  child: MyText(
+                    title: "عرض الكل",
+                    color: ColorManager.grey2,
+                    size: 13,
+                    fontWeight: FontWeight.w400,
+                    decoration: TextDecoration.underline,
+                  )),
+            ],
+          ),
+          SizedBox(
+            height: 12,
+          ),
+          // if(cubit.state.mostRatedState == RequestState.loaded)
+          cubit.state.technicianList.length > 0
+              ? Column(
+                  children: List.generate(
+                      3,
+                      (index) => TechnicalPersonCard(
+                            model: cubit.state.technicianList[index],
+                          )),
+                )
+              : Center(
+                  child: MyText(
+                    title: "لا يوجد بيانات",
+                  ),
+                ),
 
-        // if(cubit.state.mostRatedState == RequestState.loading)
-        //   Center(child: AppLoaderHelper.showSimpleLoading(),),
-        // if(cubit.state.mostRatedState == RequestState.error)
-        //   Center(child: MyText(title: "لا يوجد بيانات",),)
-      ],
+          // if(cubit.state.mostRatedState == RequestState.loading)
+          //   Center(child: AppLoaderHelper.showSimpleLoading(),),
+          // if(cubit.state.mostRatedState == RequestState.error)
+          //   Center(child: MyText(title: "لا يوجد بيانات",),)
+        ],
+      ),
     );
   }
 }

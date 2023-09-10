@@ -5,6 +5,7 @@ import 'package:base_flutter/core/resource/color_manager.dart';
 import 'package:base_flutter/core/resource/navigation_service.dart';
 import 'package:base_flutter/features/presentation/order_details/order_details.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 import '../../../models/orders_model.dart';
 
@@ -37,7 +38,13 @@ class OrderItem extends StatelessWidget {
                 color: ColorManager.offWhite,
                 borderRadius: BorderRadius.circular(15),
               ),
-              child: CachedImage(
+              child:             orders.services![0].image!.contains("svg")
+        ?SvgPicture.network(
+                orders.services![0].image ?? '',
+                height: 40,
+                width: 40,
+                color: ColorManager.primary,
+              ):  CachedImage(
                 url:
                     "${orders.services?[0].image}",
                 borderRadius: BorderRadius.circular(15),

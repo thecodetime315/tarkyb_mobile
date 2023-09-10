@@ -32,6 +32,7 @@ class LoginButtons extends StatelessWidget {
                 textColor: ColorManager.primary,
                 onTap: () {
                   context.read<LoginCubit>().login(context);
+
                 },
                 margin: EdgeInsets.symmetric(horizontal: 30, vertical: 25),
               );
@@ -78,7 +79,7 @@ class LoginButtons extends StatelessWidget {
             NavigationService.navigateTo(MainNavigationBar());
           },
           child: MyText(
-            title: "الدخول كذائر",
+            title: "الدخول كزائر",
             color: ColorManager.white,
           ),
         ),

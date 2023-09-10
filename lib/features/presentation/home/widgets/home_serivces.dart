@@ -12,30 +12,33 @@ class HomeServices extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var homeCubit = context.read<HomeCubit>().state;
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        MyText(
-          title: "خدماتنا",
-          fontWeight: FontWeight.w400,
-          color: ColorManager.primary,
-          alien: TextAlign.start,
-          size: 16,
-        ),
-        SizedBox(
-          height: 12,
-        ),
-        if (homeCubit.servicesState == RequestState.loaded)
-          homeCubit.servicesList.isNotEmpty
-              ? Wrap(children: List.generate(homeCubit.servicesList.length, (index) => HomeServicesItem(model: homeCubit.servicesList[index],)))
-              : Center(
-                  child: MyText(
-                    title: "لا يوجد بيانات",
+    return Padding(
+      padding: const EdgeInsets.all(5.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          MyText(
+            title: "خدماتنا",
+            fontWeight: FontWeight.w400,
+            color: ColorManager.primary,
+            alien: TextAlign.start,
+            size: 16,
+          ),
+          SizedBox(
+            height: 12,
+          ),
+          if (homeCubit.servicesState == RequestState.loaded)
+            homeCubit.servicesList.isNotEmpty
+                ? Wrap(children: List.generate(homeCubit.servicesList.length, (index) => HomeServicesItem(model: homeCubit.servicesList[index],)))
+                : Center(
+                    child: MyText(
+                      title: "لا يوجد بيانات",
+                    ),
                   ),
-                ),
-        if (homeCubit.servicesState == RequestState.loading)
-          Center(child: AppLoaderHelper.showSimpleLoading(),)
-      ],
+          if (homeCubit.servicesState == RequestState.loading)
+            Center(child: AppLoaderHelper.showSimpleLoading(),)
+        ],
+      ),
     );
   }
 }

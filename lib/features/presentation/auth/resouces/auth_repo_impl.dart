@@ -77,6 +77,18 @@ class AuthRepoImpl extends AuthBaseRepo {
       return false;
     }
   }
+  Future<bool> changePassword(String oldPassword, String newPassword, String confirmNewPassword) async {
+    Map<String, dynamic> body = {"old_password": oldPassword, "new_password": newPassword, "new_password_confirmation" : confirmNewPassword};
+    var data =
+        await DioHelper().post(url: AppStringsManager.changePassword, body: body);
+    if (data != null) {
+      SnackBarHelper.showBasicSnack(msg: data['data']);
+      return true;
+    } else {
+      SnackBarHelper.showBasicSnack(msg: "حدث خطأ ما");
+      return false;
+    }
+  }
 
   Future<bool> resendOtp(String phone) async {
     Map<String, dynamic> body = {"phone": phone};

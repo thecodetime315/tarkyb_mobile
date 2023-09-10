@@ -34,7 +34,6 @@ class Data {
     title = json['title'];
     body = json['body'];
     type = json['type'];
-    url = json['url'];
   }
 
   Map<String, dynamic> toJson() {
@@ -42,7 +41,6 @@ class Data {
     data['title'] = this.title;
     data['body'] = this.body;
     data['type'] = this.type;
-    data['url'] = this.url;
     return data;
   }
 }

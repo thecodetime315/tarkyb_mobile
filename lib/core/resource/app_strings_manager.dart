@@ -18,6 +18,7 @@ class AppStringsManager {
   static const String getTechnicianDetails = "get_technician/";
   static const String addToCart = "add_to_cart";
   static const String checkOtp = "check-otp";
+  static const String changePassword = "change-password";
   static const String getCartItems = "get_cart_items";
   static const String deleteAllCart = "delete_all_cart_items";
   static const String deleteService = "delete_service_cart/";

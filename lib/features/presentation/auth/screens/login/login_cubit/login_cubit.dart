@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../../core/helpers/snack_helper.dart';
 import '../../../../../../core/utils/enums.dart';
+import '../../../../main_navigation_bar/cubits/main_navigation_cubit.dart';
 import '../../../resouces/auth_base_repo.dart';
 
 part 'login_state.dart';
@@ -31,6 +32,7 @@ class LoginCubit extends Cubit<LoginState> {
       if (result) {
         emit(state.copyWith(loginState: RequestState.loaded));
         SnackBarHelper.showBasicSnack(msg: "تم تسجيل الدخول بنجاح");
+        context.read<BottomNavCubit>().updateIndex(0);
 
       } else {
         emit(state.copyWith(loginState: RequestState.init));

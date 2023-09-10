@@ -90,7 +90,7 @@
   "contactOnWhats": "Communication via WhatsApp",
   "activeAccount": "activate the account",
   "codeSendToPhone":"An activation code will be sent to your mobile number via SMS",
-  "passValidation": "Please enter at least 6 letters or numbers",
+  "passValidation": "Please enter at least 8 letters or numbers",
   "mailValidation": "Please enter a valid email",
   "phoneValidation": "Please enter a valid mobile phone",
   "confirmValidation": "Please enter the password identical",
