@@ -63,10 +63,7 @@ class BuildSendMessage extends StatelessWidget {
               },
             );
           } else {
-            return Center(
-                child: MyText(
-              title: "لا يوجد بيانات",
-            ));
+            return NoData();
           }
         },
       ),

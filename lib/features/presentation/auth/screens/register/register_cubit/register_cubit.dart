@@ -3,7 +3,6 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:base_flutter/core/injection/get_injection.dart' as di;
-import '../../../../../../core/helpers/snack_helper.dart';
 import '../../../../../../core/utils/enums.dart';
 import '../../../resouces/auth_base_repo.dart';
 

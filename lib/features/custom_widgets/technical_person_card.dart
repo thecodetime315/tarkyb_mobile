@@ -8,7 +8,6 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 import '../../core/base_widgets/cache_image.dart';
 import '../../core/base_widgets/my_text.dart';
-import '../../core/resource/assets_manager.dart';
 import '../presentation/technician_details/cubits/tech_details_cubit.dart';
 import '../presentation/technician_details/technician_details.dart';
 

@@ -2,9 +2,7 @@ import 'package:base_flutter/core/base_widgets/cache_image.dart';
 import 'package:base_flutter/core/base_widgets/my_text.dart';
 import 'package:base_flutter/core/extensions/media_query.dart';
 import 'package:base_flutter/core/resource/color_manager.dart';
-import 'package:base_flutter/features/presentation/order_details/cubit/order_details_cubit.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../models/order_details_model.dart';
 

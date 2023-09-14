@@ -7,7 +7,6 @@ import 'package:base_flutter/features/presentation/order_details/widgets/technic
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../custom_widgets/custom_gradient_button.dart';
 import 'order_button.dart';
 import 'order_details_item.dart';
 import 'order_details_service_item.dart';

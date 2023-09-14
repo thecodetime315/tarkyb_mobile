@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:base_flutter/core/resource/navigation_service.dart';
 import 'package:base_flutter/core/utils/enums.dart';

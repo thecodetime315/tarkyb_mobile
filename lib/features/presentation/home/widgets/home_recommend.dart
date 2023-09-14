@@ -4,6 +4,7 @@ import 'package:base_flutter/core/resource/navigation_service.dart';
 import 'package:base_flutter/features/presentation/home/cubit/home_cubit/home_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../custom_widgets/no_data.dart';
 import '../../../custom_widgets/technical_person_card.dart';
 import '../../all_recommend_technicians/all_recommend_technicians.dart';
 
@@ -54,16 +55,12 @@ class HomeRecommend extends StatelessWidget {
                             model: cubit.state.technicianList[index],
                           )),
                 )
-              : Center(
-                  child: MyText(
-                    title: "لا يوجد بيانات",
-                  ),
-                ),
+              : NoData(),
 
           // if(cubit.state.mostRatedState == RequestState.loading)
           //   Center(child: AppLoaderHelper.showSimpleLoading(),),
           // if(cubit.state.mostRatedState == RequestState.error)
-          //   Center(child: MyText(title: "لا يوجد بيانات",),)
+          //   NoData()
         ],
       ),
     );

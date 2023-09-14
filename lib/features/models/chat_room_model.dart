@@ -3,7 +3,7 @@ class ChatRoomModel {
   int? orderId;
   SenderId? senderId;
   String? message;
-  Null? readAt;
+  String? readAt;
   String? createdAt;
 
   ChatRoomModel(

@@ -1,10 +1,10 @@
-import 'package:base_flutter/core/base_widgets/my_text.dart';
 import 'package:base_flutter/core/helpers/app_loader_helper.dart';
 import 'package:base_flutter/core/utils/enums.dart';
 import 'package:base_flutter/features/presentation/filter/cubits/filter_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../custom_widgets/no_data.dart';
 import '../../../custom_widgets/technical_person_card.dart';
 
 class FilterBody extends StatelessWidget {
@@ -31,11 +31,7 @@ class FilterBody extends StatelessWidget {
                   },
                   itemCount: state.technicianList.length,
                 )
-              : Center(
-                  child: MyText(
-                    title: "لا يوجد بيانات",
-                  ),
-                );
+              : NoData();
 
         return SizedBox();
       },

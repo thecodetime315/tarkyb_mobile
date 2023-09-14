@@ -26,7 +26,7 @@ class Data {
   String? title;
   String? body;
   String? type;
-  Null? url;
+  String? url;
 
   Data({this.title, this.body, this.type, this.url});
 

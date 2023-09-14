@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:base_flutter/core/base_widgets/my_text.dart';
 import 'package:base_flutter/core/generic_cubit/generic_cubit.dart';

@@ -1,9 +1,9 @@
-import 'package:base_flutter/core/base_widgets/my_text.dart';
 import 'package:base_flutter/core/helpers/app_loader_helper.dart';
 import 'package:base_flutter/features/presentation/orders/cubits/orders_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../custom_widgets/no_data.dart';
 import 'order_item.dart';
 
 class OrderBody extends StatelessWidget {
@@ -20,17 +20,9 @@ class OrderBody extends StatelessWidget {
                     return OrderItem(orders: state.ordersList[index],);
                   },
                 )
-              : Center(
-                  child: MyText(
-                    title: "لا يوجد بيانات",
-                  ),
-                );
+              : NoData();
         }
-        return state is OrdersLoading ? Center(child: AppLoaderHelper.showSimpleLoading(),) : Center(
-          child: MyText(
-            title: "لا يوجد بيانات",
-          ),
-        );
+        return state is OrdersLoading ? Center(child: AppLoaderHelper.showSimpleLoading(),) : NoData();
       },
     );
   }

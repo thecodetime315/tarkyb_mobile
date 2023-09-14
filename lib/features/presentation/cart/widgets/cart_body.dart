@@ -12,6 +12,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/base_widgets/my_text.dart';
 import '../../../custom_widgets/app_custom_appbar.dart';
+import '../../../custom_widgets/no_data.dart';
 
 class CartBody extends StatefulWidget {
   @override
@@ -112,7 +113,7 @@ class _CartBodyState extends State<CartBody> {
                   ],
                 ),
               ),
-            ) : Center(child: MyText(title: "لا يوجد بيانات",),);
+            ) : NoData();
           }
           return Center(child: AppLoaderHelper.showSimpleLoading(),);
         },
